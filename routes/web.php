@@ -5,6 +5,7 @@
 // its taking a little getting used to it
 // all i have to do here is just commit and simply type git pull
 //well, i have to write git pull origin master
+//aight, good luck beratna!!!
 /*
 |--------------------------------------------------------------------------
 | Web Routes
