@@ -1,6 +1,7 @@
 <?php
 
 //remnent of a great occurence
+//.env file is not visible somehow
 /*
 |--------------------------------------------------------------------------
 | Web Routes
