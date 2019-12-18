@@ -48,20 +48,30 @@ class MaterialController extends Controller
         $material->material_id = keyGen($material);
         $material->material_name = $request->material_name;
         $material->material_reference = $request->material_id;
-        $material->material_worksheet = $request->material_worksheet_format;
-        $material->material_report = $request->material_report_format;
+        
 
+        //forge relevent filenames
         $material_name = $request->material_name;
         $material_id = $request->material_id;
+        $worksheet_filename = "worksheet_".$material_name."_".$material_id.".xlsx";
+        $report_filename = "report_".$material_name."_".$material_id.".xlsx";
         
-        $worksheet_filename = "worksheet_".$material_name."_".$material_id.".xltx";
-        $report_filename = "report_".$material_name."_".$material_id.".xltx";
+        // directories in public folders to upload reports
+        $worksheet_directory = "Material_Worksheet_Formats";
+        $report_directory = "Material_Report_Formats";
         
-        $request->file('material_worksheet_format')->storeAs("Material_Worksheet_Formats", $worksheet_filename );
-        $request->file('material_report_format')->storeAs("Material_Report_Formats", $report_filename );
+        $report_file = $request->file('material_worksheet_format')->storeAs($worksheet_directory, $worksheet_filename );
+        $request->file('material_report_format')->storeAs($report_directory, $report_filename );
+
+        $worksheet_storage = storage_path("app\\".$worksheet_directory."\\".$worksheet_filename);
+        $report_storage = storage_path("app\\".$report_directory."\\".$report_filename);
+
+        //store path in models
+        $material->material_worksheet = $worksheet_storage;
+        $material->material_report = $report_storage;
 
         $material->save();
-        return redirect()->route('material.index')->withStatus(__('Material Added successfully.'));
+        return redirect()->route('material.index')->withStatus(__('Material Added successfully.'.$worksheet_storage." |".$report_storage));
     }
 
     /**
