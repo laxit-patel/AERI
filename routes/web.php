@@ -3,6 +3,7 @@
 // sending hi from laptop - please write back
 // hello fellow lappy - konnichiwa!!!
 // its taking a little getting used to it
+// all i have to do here is just commit and simply type git pull
 /*
 |--------------------------------------------------------------------------
 | Web Routes
