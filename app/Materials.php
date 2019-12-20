@@ -9,6 +9,7 @@ class Materials extends Model
     protected $primarykey = 'material_id';
     public $incrementing = false;
 
+    public $fillable = ['material_worksheet', 'material_report'];
     const Alias = "MTRL";
     const PK = "material_id";
     const Ref = "material_reference";

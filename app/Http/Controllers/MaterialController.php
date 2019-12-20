@@ -53,8 +53,11 @@ class MaterialController extends Controller
         //forge relevent filenames
         $material_name = $request->material_name;
         $material_id = $request->material_id;
-        $worksheet_filename = "worksheet_".$material_name."_".$material_id.".xlsx";
-        $report_filename = "report_".$material_name."_".$material_id.".xlsx";
+        $worksheet_extension = $request->file("material_worksheet_format")->getClientOriginalExtension();
+        $report_extension = $request->file("material_worksheet_format")->getClientOriginalExtension();
+        
+        $worksheet_filename = "worksheet_".$material_name."_".$material_id.".".$worksheet_extension;
+        $report_filename = "report_".$material_name."_".$material_id.".".$report_extension;
         
         // directories in public folders to upload reports
         $worksheet_directory = "Material_Worksheet_Formats";

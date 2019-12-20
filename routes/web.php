@@ -17,6 +17,13 @@ Route::get('/', function () {
 	
     return view('welcome');
 });
+
+Route::get('/file', function(){
+	$path = $request->file('photo')->store('photos');
+
+    dd($path);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
