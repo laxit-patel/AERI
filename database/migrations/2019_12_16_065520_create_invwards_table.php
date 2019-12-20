@@ -14,7 +14,7 @@ class CreateInvwardsTable extends Migration
     public function up()
     {
         Schema::create('inwards', function (Blueprint $table) {
-            $table->string('inward_id');
+            $table->string('inward_id')->unique();
             $table->string('inward_reference');
             $table->timestamps();
             $table->string("inward_client");
