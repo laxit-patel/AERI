@@ -21,6 +21,7 @@ class CreateClientTable extends Migration
             $table->string('client_phone');
             $table->string('client_email');
             $table->string('client_address');
+            $table->string('client_gstin');
             
         });
     }

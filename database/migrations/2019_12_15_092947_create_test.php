@@ -18,8 +18,10 @@ class CreateTest extends Migration
             $table->string('test_reference');
             $table->string("test_name");
             $table->string("test_material");
-            $table->string("test_parameters");
+            $table->string("test_rate");
+            $table->string("test_worksheet");
             $table->string("test_duration");
+            $table->boolean("test_status");
             $table->timestamps();
         });
     }

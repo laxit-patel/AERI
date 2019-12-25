@@ -13,4 +13,9 @@ class Materials extends Model
     const Alias = "MTRL";
     const PK = "material_id";
     const Ref = "material_reference";
+
+    public function tests()
+    {
+        return $this->hasMany('App\Tests');
+    }
 }

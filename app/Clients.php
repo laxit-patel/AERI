@@ -12,4 +12,9 @@ class Clients extends Model
     const Alias = "CLNT";
     const PK = "client_id";
     const Ref = "client_reference";
+
+    public function inwards()
+    {
+        return $this->hasMany('App\Inwards');
+    }
 }
