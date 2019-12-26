@@ -27,7 +27,8 @@ class ClientController extends Controller
     {
         $client = new Clients;
         $reference = reference($client);
-        return view('client.create', ['reference' => $reference]);
+        $key = keyGen($client);
+        return view('client.create', ['reference' => $reference, 'key' => $key]);
     }
 
     /**
@@ -40,17 +41,18 @@ class ClientController extends Controller
     {
 
      $request->validate([
-            'client_id' => 'required|unique:clients,client_reference'
+            'client_reference' => 'required|unique:clients,client_reference'
         ]);
 
         $client = new Clients;
         
         $client->client_id = keyGen($client);
-        $client->client_reference = $request->client_id;
+        $client->client_reference = $request->client_reference;
         $client->client_name = $request->client_name;
         $client->client_phone = $request->client_phone;
         $client->client_email = $request->client_email;
         $client->client_address = $request->client_address;
+        $client->client_gstin = $request->client_gstin;
 
       $client->save();
 

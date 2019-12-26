@@ -25,9 +25,10 @@
                             
                             <div class="pl-lg-4">
 
-                            <div class="form-group{{ $errors->has('test_id') ? ' has-danger' : '' }}">
+                            <div class="row">
+                            <div class="col-md-6 form-group{{ $errors->has('test_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-id">{{ __('Test Id') }}</label>
-                                    <input type="text" name="test_id" id="input-id" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_id') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('test_id') }}" required autofocus>
+                                    <input type="text" name="test_id" id="input-id" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_id') ? ' is-invalid' : '' }}"     value="{{ $key }}" required disabled>
 
                                     @if ($errors->has('test_id'))
                                         <span class="invalid-feedback" role="alert">
@@ -35,8 +36,20 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class=" col-md-6 form-group{{ $errors->has('test_reference') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-reference">{{ __('Test Reference') }}</label>
+                                    <input type="text" name="test_reference" id="input-ireference" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_reference') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('test_reference') }}" required autofocus>
 
-                                <div class="form-group{{ $errors->has('test_name') ? ' has-danger' : '' }}">
+                                    @if ($errors->has('test_reference'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('test_reference') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group{{ $errors->has('test_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Test Name') }}</label>
                                     <input type="text" name="test_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('test_name') }}" required >
 
@@ -46,9 +59,7 @@
                                         </span>
                                     @endif
                                 </div>
-
-                                
-                                <div class="form-group{{ $errors->has('test_material') ? ' has-danger' : '' }}">
+                                <div class="col-md-6 form-group{{ $errors->has('test_material') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-material">{{ __('Test Material') }}</label>
                                     
 
@@ -65,8 +76,20 @@
                                         </span>
                                     @endif
                                 </div>
+                            </div>
 
-                                <div class="form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
+                            <div class="row">
+                            <div class="col-md-6 form-group{{ $errors->has('test_rate') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-rate">{{ __('Test Rate') }}</label>
+                                    <input type="text" name="test_rate" id="input-rate" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_rate') ? ' is-invalid' : '' }}" placeholder="{{ __('Rates') }}" value="{{ old('test_parameter') }}" required >
+
+                                    @if ($errors->has('test_parameter'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('test_paramter') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-material">{{ __('Test Duration') }}</label>
                                     <input type="time" name="test_duration" id="input-material" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
 
@@ -76,18 +99,9 @@
                                         </span>
                                     @endif
                                 </div>
-                             
+                             </div>
 
-                                <div class="form-group{{ $errors->has('test_parameter') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-material">{{ __('Test Parameters') }}</label>
-                                    <input type="text" name="test_parameter" id="input-material" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_parameter') ? ' is-invalid' : '' }}" placeholder="{{ __('Parameter') }}" value="{{ old('test_parameter') }}" required >
-
-                                    @if ($errors->has('test_parameter'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_paramter') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                                
 
 
                                 <div class="text-center">

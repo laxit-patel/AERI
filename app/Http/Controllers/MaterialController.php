@@ -26,7 +26,8 @@ class MaterialController extends Controller
     { 
         $material = new Materials;
         $reference = reference($material);
-        return view('material.create', ['reference' => $reference]);
+        $key = keyGen($material);
+        return view('material.create', ['reference' => $reference,'key' => $key]);
     }
 
     /**
@@ -40,17 +41,19 @@ class MaterialController extends Controller
         $material = new Materials;
 
         $request->validate([
-            'material_id' => "required|unique:materials,material_reference",
-            'material_worksheet_format' => 'required | file | mimes:xls,xlsx,xltx',
-            'material_report_format' => 'required | file | mimes:xls,xlsx,xlxt',
+            'material_reference' => "required|unique:materials,material_reference",
+            //'material_worksheet_format' => 'required | file | mimes:xls,xlsx,xltx',
+            //'material_report_format' => 'required | file | mimes:xls,xlsx,xlxt',
         ]);
         
         $material->material_id = keyGen($material);
         $material->material_name = $request->material_name;
-        $material->material_reference = $request->material_id;
+        $material->material_reference = $request->material_reference;
+        $material->material_iscode = $request->material_iscode;
+        $material->material_description = $request->material_description;
         
-
-        //forge relevent filenames
+        /** 
+        forge relevent filenames
         $material_name = $request->material_name;
         $material_id = $request->material_id;
         $worksheet_extension = $request->file("material_worksheet_format")->getClientOriginalExtension();
@@ -72,9 +75,10 @@ class MaterialController extends Controller
         //store path in models
         $material->material_worksheet = $worksheet_storage;
         $material->material_report = $report_storage;
+        */
 
         $material->save();
-        return redirect()->route('material.index')->withStatus(__('Material Added successfully.'.$worksheet_storage." |".$report_storage));
+        return redirect()->route('material.index')->withStatus(__('Material Added successfully.'));
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateMaterialsTable extends Migration
             $table->string('material_reference');
             $table->string("material_name");
             $table->string("material_iscode");
+            $table->string("material_description");
             $table->timestamps();
         });
     }

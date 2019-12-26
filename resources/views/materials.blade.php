@@ -49,10 +49,8 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Worksheet</th>
-            <th scope="col">Report</th>
-            
-            
+            <th scope="col">IS Code</th>
+            <th scope="col">Description</th>
         </tr>
     </thead>
     <tbody class="text-white">
@@ -63,13 +61,13 @@
        <tr>
             
             <td>{{ $material->material_reference }}</td>
+            <td>{{ $material->material_iscode }}</td>
             <td>{{ $material->material_name }}</td>
-            <td>{{ $material->material_worksheet }}</td>
-            <td>{{ $material->material_report }}</td>
+            <td>{{ $material->material_description }}</td>
             
              
           </tr>
-          <tr>
+          
  
      @endforeach
      

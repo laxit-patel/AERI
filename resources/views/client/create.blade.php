@@ -24,9 +24,10 @@
                             
                             <div class="pl-lg-4">
 
-                            <div class="form-group{{ $errors->has('client_id') ? ' has-danger' : '' }}">
+                            <div class="row">
+                            <div class=" col-md-6 form-group{{ $errors->has('client_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('ID') }}</label>
-                                    <input type="text" name="client_id" id="input-name" class="disabled form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_id') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('client_id') }}" required  autofocus>
+                                    <input type="text" name="client_id" id="input-name" class="disabled form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_id') ? ' is-invalid' : '' }}" placeholder="" value="{{ $key }}" required  autofocus disabled>
 
                                     @if ($errors->has('client_id'))
                                         <span class="invalid-feedback" role="alert">
@@ -35,7 +36,21 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group{{ $errors->has('client_name') ? ' has-danger' : '' }}">
+                            <div class="col-md-6 form-group{{ $errors->has('client_reference') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-reference">{{ __('Reference') }}</label>
+                                    <input type="text" name="client_reference" id="input-reference" class=" form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_reference') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('client_reference') }}" required  autofocus>
+
+                                    @if ($errors->has('client_reference'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('client_reference') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                </div>
+
+                                <div class="row">
+                                <div class="col-md-6 form-group{{ $errors->has('client_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
                                     <input type="text" name="client_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('client_name') }}" required autofocus>
 
@@ -45,17 +60,8 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('client_email') ? ' has-danger' : '' }} ">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="client_email" id="input-email" class="form-control form-control-lg font-weight-bold text-white  bg-gradient-primary  form-control-alternative{{ $errors->has('client_email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('client_email') }}" required>
 
-                                    @if ($errors->has('client_email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('client_email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('client_phone') ? ' has-danger' : '' }}">
+                                <div class="col-md-6 form-group{{ $errors->has('client_phone') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Phone') }}</label>
                                     <input type="text" name="client_phone" id="input-password" class="form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone') }}" value="{{ old('client_phone') }}" required>
                                     
@@ -65,10 +71,38 @@
                                         </span>
                                     @endif
                                 </div>
+                                </div>
+
+                                <div class="row">
+                                <div class=" col-md-6 form-group{{ $errors->has('client_email') ? ' has-danger' : '' }} ">
+                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
+                                    <input type="email" name="client_email" id="input-email" class="form-control form-control-lg font-weight-bold text-white  bg-gradient-primary  form-control-alternative{{ $errors->has('client_email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('client_email') }}" required>
+
+                                    @if ($errors->has('client_email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('client_email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-6 form-group{{ $errors->has('client_gestin') ? ' has-danger' : '' }} ">
+                                    <label class="form-control-label" for="input-gstin">{{ __('GSTIN') }}</label>
+                                    <input type="text" name="client_gstin" id="input-gstin" class="form-control form-control-lg font-weight-bold text-white  bg-gradient-primary  form-control-alternative{{ $errors->has('client_gstin') ? ' is-invalid' : '' }}" placeholder="{{ __('G.S.T') }}" value="{{ old('client_gstin') }}" required>
+
+                                    @if ($errors->has('client_gstin'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('client_gestin') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                </div>
+                                
 
                                 <div class="form-group{{ $errors->has('client_address') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-address">{{ __('Address') }}</label>
-                                    <input type="text" name="client_address" id="input-address" class="form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_address') ? ' is-invalid' : '' }}" placeholder="{{ __('Address') }}" value="{{ old('client_address') }}" required>
+
+                                    <textarea name="client_address" id="input-address" class="form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_address') ? ' is-invalid' : '' }}" placeholder="{{ __('Client Address') }}" value="{{ old('client_address') }}" required >
+                                    </textarea>
                                     
                                     @if ($errors->has('client_address'))
                                         <span class="invalid-feedback" role="alert">

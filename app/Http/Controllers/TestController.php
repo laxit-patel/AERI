@@ -28,7 +28,8 @@ class TestController extends Controller
         $materials = DB::table('materials')->pluck('material_name', 'material_id');
         $test = new Tests;
         $reference = reference($test);
-        return view('test.create', compact('materials', 'reference'));
+        $key = keyGen($test);
+        return view('test.create', compact('materials', 'reference','key'));
     }
 
     /**

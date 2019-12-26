@@ -25,9 +25,10 @@
                             
                             <div class="pl-lg-4">
 
-                            <div class="form-group{{ $errors->has('material_id') ? ' has-danger' : '' }}">
+                            <div class="row">
+                            <div class="col-md-6 form-group{{ $errors->has('material_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Material ID') }}</label>
-                                    <input type="text" name="material_id" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_id') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('material_id') }}" required autofocus>
+                                    <input type="text" name="material_id" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_id') ? ' is-invalid' : '' }}" value="{{ $key }}" required autofocus disabled>
 
                                     @if ($errors->has('material_id'))
                                         <span class="invalid-feedback" role="alert">
@@ -35,8 +36,20 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="col-md-6 form-group{{ $errors->has('material_reference') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-reference">{{ __('Material Reference') }}</label>
+                                    <input type="text" name="material_reference" id="input-reference" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_reference') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('material_reference') }}" required autofocus>
 
-                                <div class="form-group{{ $errors->has('material_name') ? ' has-danger' : '' }}">
+                                    @if ($errors->has('material_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('material_id') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group{{ $errors->has('material_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Material Name') }}</label>
                                     <input type="text" name="material_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('material_name') }}" required autofocus>
 
@@ -46,7 +59,30 @@
                                         </span>
                                     @endif
                                 </div>
-                                
+                                <div class="col-md-6 form-group{{ $errors->has('material_iscode') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-iscode">{{ __('Material I.S Code') }}</label>
+                                    <input type="text" name="material_iscode" id="input-iscode" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_iscode') ? ' is-invalid' : '' }}" placeholder="{{ __('I.S Code') }}" value="{{ old('material_iscode') }}" required autofocus>
+
+                                    @if ($errors->has('material_iscode'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('material_iscode') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class=" form-group{{ $errors->has('material_description') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-details">{{ __('Material Description') }}</label>
+                                    <textarea  name="material_description" id="input-details" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_description') ? ' is-invalid' : '' }}" placeholder="{{ __('Material Description') }}" value="{{ old('material_description') }}" required autofocus>
+                                    </textarea>
+                                    @if ($errors->has('material_description'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('material_description') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <!-- Remnent of last file operations
                                 <div class="row">
 
                                 <div class=" custom-file col-md-6 form-group{{ $errors->has('material_worksheet_format') ? ' has-danger' : '' }}">
@@ -72,6 +108,7 @@
                                 </div>
 
                                 </div>
+                                -->
                                 
 
                                 
