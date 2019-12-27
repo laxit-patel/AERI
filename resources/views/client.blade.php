@@ -122,7 +122,7 @@
 @push('js')
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-    <script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>
 
     <script type="text/javascript">
     var $table = $('#fresh-table')
@@ -165,9 +165,9 @@
         toolbar: '.toolbar',
 
         search: true,
-        showRefresh: true,
+        showRefresh: false,
         showToggle: true,
-        showColumns: true,
+        showColumns: false,
         pagination: true,
         striped: true,
         sortable: true,
