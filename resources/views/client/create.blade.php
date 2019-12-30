@@ -93,9 +93,7 @@
 
                                 <div class="form-group{{ $errors->has('client_address') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-address">{{ __('Address') }}</label>
-
-                                    <textarea name="client_address" id="input-address" class="form-control form-control-lg font-weight-bold text-white bg-gradient-primary form-control-alternative{{ $errors->has('client_address') ? ' is-invalid' : '' }}" placeholder="{{ __('Client Address') }}" value="{{ old('client_address') }}" required >
-                                    </textarea>
+                                    <textarea name="client_address" id="input-address" class="form-control text-white form-control-lg bg-gradient-primary {{ $errors->has('client_address') ? ' is-invalid' : '' }}" placeholder="Client Address" value="{{ old('client_address') }}" required></textarea>
                                     
                                     @if ($errors->has('client_address'))
                                         <span class="invalid-feedback" role="alert">

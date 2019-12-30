@@ -63,6 +63,7 @@
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="iscode" data-sortable="true">IS Code</th>
                                 <th data-field="material" data-sortable="true">Material</th>
+                                <th data-field="duration">Duration</th>
                                 <th data-field="rate">Rate</th>
                                 <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                                 </thead>
@@ -74,6 +75,7 @@
                                 <td>{{ $test->test_name }}</td>
                                 <td>{{ $test->test_iscode }}</td>
                                 <td>{{ $test->test_material }}</td>
+                                <td>{{ $test->test_duration }}</td>
                                 <td>{{ $test->test_rate }}</td>
                                 </tr>
                                 @endforeach

@@ -22,7 +22,7 @@
                             @csrf
 
                             <div class="row">
-                            <div class="col-md-2 form-group{{ $errors->has('test_id') ? ' has-danger' : '' }}">
+                            <div class="col-md-3 form-group{{ $errors->has('test_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-id">{{ __('Test Id') }}</label>
                                     <input type="text" name="test_id" id="input-id" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_id') ? ' is-invalid' : '' }}"     value="{{ $key }}" required disabled>
 
@@ -32,7 +32,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class=" col-md-5 form-group{{ $errors->has('test_iscode') ? ' has-danger' : '' }}">
+                                <div class=" col-md-4 form-group{{ $errors->has('test_iscode') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-reference">{{ __('Test IS CODE') }}</label>
                                     <input type="text" name="test_iscode" id="input-ireference" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_iscode') ? ' is-invalid' : '' }}" placeholder="{{ __('IS CODE') }}" value="{{ old('test_iscode') }}" required autofocus>
 
@@ -72,18 +72,22 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="col-md-4 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-material">{{ __('Test Duration') }}</label>
-                                    <input type="time" name="test_duration" id="input-material" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
 
+                                <div class="col-md-5 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-material">{{ __('Test Duration (Days - Hours)') }}</label>
+                                        <div class="row">
+                                            <input type="number" max="365" name="test_days" id="input-material" class="col-md-6 form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
+                                            <input type="time"  name="test_time" id="input-material" class="col-md-6 form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
+                                        </div>
                                     @if ($errors->has('test_duration'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('test_duration') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="col-md-4 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-worksheet">{{ __('Test Worksheet Format') }}</label>
+                                
+                                <div class="col-md-3 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-worksheet">{{ __('Format') }}</label>
                                     <input type="file" name="test_worksheet" id="input-worksheet" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_worksheet') ? ' is-invalid' : '' }}" placeholder="{{ __('Worksheet Format') }}" value="{{ old('test_worksheet') }}" required >
 
                                     @if ($errors->has('test_worksheet'))

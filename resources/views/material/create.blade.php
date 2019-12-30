@@ -36,7 +36,7 @@
                                 
                                 <div class="col-md-8 form-group{{ $errors->has('material_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Material Name') }}</label>
-                                    <input type="text" name="material_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('material_name') }}" required autofocus>
+                                    <input type="text" name="material_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning {{ $errors->has('material_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('material_name') }}" required autofocus>
 
                                     @if ($errors->has('material_name'))
                                         <span class="invalid-feedback" role="alert">
@@ -50,8 +50,8 @@
 
                             <div class=" form-group{{ $errors->has('material_description') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-details">{{ __('Material Description') }}</label>
-                                    <textarea  name="material_description" id="input-details" class="form-control form-control-lg font-weight-bold text-white bg-gradient-warning form-control-alternative{{ $errors->has('material_description') ? ' is-invalid' : '' }}" placeholder="{{ __('Material Description')}}" value="{{ old('material_description') }}" required autofocus>
-                                    </textarea>
+                                    <textarea name="material_description" id="input-details" class="form-control bg-gradient-warning form-control-lg text-white {{ $errors->has('material_description') ? ' is-invalid' : '' }}" placeholder="Material Description" value="{{ old('material_description') }}" required></textarea>
+
                                     @if ($errors->has('material_description'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('material_description') }}</strong>

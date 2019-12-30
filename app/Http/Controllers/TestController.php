@@ -59,7 +59,10 @@ class TestController extends Controller
         $test->test_iscode = $request->test_iscode;
         $test->test_name = $request->test_name;
         $test->test_material = $request->test_material;
-        $test->test_duration = $request->test_duration;
+        $test_days = $request->test_days;
+        $test_time = $request->test_time;
+        $test_duration = $test_days." Days ". $test_time." Hours";
+        $test->test_duration = $test_duration;
         $test->test_worksheet = $worksheet_path;
         $test->test_rate = $request->test_rate;
         $test->test_rate_mes = $request->test_rate_mes;
