@@ -10,13 +10,12 @@ $("#inward_test_datalist").on('change', function () {
         return this.value.toUpperCase() === val.toUpperCase();        
     }).length) {
         //sending ajax request to retrieve related materials
-        alert("fired");
         $.ajax({
             type:'GET',
             url:'/getTest/'+val,
             data:val,
             success:function(data) {
-                alert(data);
+                
                $("#inward_material_dropdown").html("<option value='"+ data.material_id+"'>"+ data.material_name +"</option>");
             }
          });

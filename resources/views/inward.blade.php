@@ -22,7 +22,7 @@
                             <div class="col">
                                 <ul class="nav nav-pills justify-content-end">
                                     <li class="nav-item mr-2 mr-md-0" data-toggle="chart" >
-                                        <a href="{{ route('test.create') }}" class="nav-link py-2 px-3 active bg-success" >
+                                        <a href="{{ route('inward.create') }}" class="nav-link py-2 px-3 active bg-success" >
                                             <span class="d-none d-md-block">Add New</span>
                                             <span class="d-md-none">+</span>    
                                         </a>
@@ -60,10 +60,10 @@
                             <table id="fresh-table" class="table">
                                 <thead>
                                 <th data-field="id">ID</th>
-                                <th data-field="name" data-sortable="true">Client</th>
-                                <th data-field="iscode" data-sortable="true">Test</th>
-                                <th data-field="duration">Deadline</th>
-                                <th data-field="rate">Status</th>
+                                <th data-field="client" data-sortable="true">Client</th>
+                                <th data-field="test" data-sortable="true">Test</th>
+                                <th data-field="deadline">Deadline</th>
+                                <th data-field="material">Material</th>
                                 <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                                 </thead>
                                 <tbody>
@@ -71,10 +71,10 @@
                                 @foreach ($inwards as $inward)
                                 <tr>
                                 <td>{{ $inward->inward_id }}</td>
-                                <td>{{ $inward->inward_client }}</td>
-                                <td>{{ $inward->inward_test }}</td>
+                                <td>{{ $inward->client_name }}</td>
+                                <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->inward_report_date }}</td>
-                                <td>{{ $inward->inward_status }}</td>
+                                <td>{{ $inward->material_name }}</td>
                                 
                                 </tr>
                                 @endforeach
@@ -127,7 +127,7 @@
     function operateFormatter(value, row, index) {
       return [
         '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
-          '<i class="fa fa-heart"></i>',
+          '<i class="fa fa-bong text-cyan"></i>',
         '</a>',
         '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
           '<i class="fa fa-edit"></i>',
