@@ -14,10 +14,13 @@ class CreateInvwardsTable extends Migration
     public function up()
     {
         Schema::create('inwards', function (Blueprint $table) {
-            $table->string('inward_id')->unique();
+            $table->string('inward_id')->primary();
             $table->string('inward_reference');
-            $table->string("inward_client");
+            $table->string('inward_client');
+            $table->foreign("inward_client")
+            ->references('client_id')->on('clients');
             $table->string("inward_test");
+            $table->foreign("inward_test")->references('test_id')->on('tests');
             $table->string("inward_date");
             $table->string("inward_report_date");
             $table->string("inward_report");

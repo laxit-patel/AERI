@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Tests;
 use App\Materials;
 use Illuminate\Http\Request;
-use DB;
 
 class TestController extends Controller
 {
@@ -73,6 +72,14 @@ class TestController extends Controller
 
         return redirect()->route('test.index')->withStatus(__('Test Added successfully.'));
 
+    }
+
+    public function ajax($id)
+    {
+    
+        $test = Tests::all()->where('test_id',$id)->first();
+        $materials = Materials::all()->where('material_id',$test->test_material)->first();
+        return $materials;
     }
 
     /**

@@ -13,11 +13,11 @@
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="card bg-gradient-orange shadow">
+                <div class="card bg-gradient-cyan shadow">
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col text-white">
-                                Inwards
+                                Laboratory
                             </div>
                             <div class="col">
                                 <ul class="nav nav-pills justify-content-end">
@@ -51,8 +51,8 @@
                             -->
                             <div class="toolbar">
                             &nbsp;
-                            <div class=" icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="fas fa-sign-in-alt "></i>
+                            <div class=" icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                <i class="fas fa-vial"></i>
                                     </div>
                                 
                             </div>
@@ -60,22 +60,23 @@
                             <table id="fresh-table" class="table">
                                 <thead>
                                 <th data-field="id">ID</th>
-                                <th data-field="name" data-sortable="true">Client</th>
-                                <th data-field="iscode" data-sortable="true">Test</th>
-                                <th data-field="duration">Deadline</th>
-                                <th data-field="rate">Status</th>
+                                <th data-field="name" data-sortable="true">Name</th>
+                                <th data-field="iscode" data-sortable="true">IS Code</th>
+                                <th data-field="material" data-sortable="true">Material</th>
+                                <th data-field="duration">Duration</th>
+                                <th data-field="rate">Rate</th>
                                 <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                                 </thead>
                                 <tbody>
                                 
-                                @foreach ($inwards as $inward)
+                                @foreach ($tests as $test)
                                 <tr>
-                                <td>{{ $inward->inward_id }}</td>
-                                <td>{{ $inward->inward_client }}</td>
-                                <td>{{ $inward->inward_test }}</td>
-                                <td>{{ $inward->inward_report_date }}</td>
-                                <td>{{ $inward->inward_status }}</td>
-                                
+                                <td>{{ $test->test_id }}</td>
+                                <td>{{ $test->test_name }}</td>
+                                <td>{{ $test->test_iscode }}</td>
+                                <td>{{ $test->test_material }}</td>
+                                <td>{{ $test->test_duration }}</td>
+                                <td>{{ $test->test_status }}</td>
                                 </tr>
                                 @endforeach
 

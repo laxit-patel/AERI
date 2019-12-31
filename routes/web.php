@@ -31,17 +31,24 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('report');
 	});
 
+	//curd routes
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::resource('client', 'ClientController', ['except' => ['show']]);
 	Route::resource('material', 'MaterialController', ['except' => ['show']]);
 	Route::resource('test', 'TestController', ['except' => ['show']]);
 	Route::resource('inward', 'InwardController', ['except' => ['show']]);
+
+	//dynamic routes
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+	//Lab routes
+	Route::get('/lab', 'LabController@index')->name('lab');
+
 	//ajax routes
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');
+	Route::get('/getTest/{id}', 'TestController@ajax');
 
 });
 

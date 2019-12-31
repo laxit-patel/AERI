@@ -83,6 +83,7 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link " href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fab fa-laravel" style="color: #f4645f;"></i>
@@ -101,6 +102,24 @@
                                     {{ __('User Management') }}
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#navbar-lab" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="fa fa-microscope text-cyan" ></i>
+                        <span class="nav-link-text text-cyan" >{{ __('Lab') }}</span>
+                    </a>
+
+                    <div class="collapse " id="navbar-lab">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('lab') }}">
+                                    {{ __('Tests') }}
+                                </a>
+                            </li>
+                           
                         </ul>
                     </div>
                 </li>

@@ -14,10 +14,12 @@ class CreateTest extends Migration
     public function up()
     {
         Schema::create('tests', function (Blueprint $table) {
-            $table->string('test_id')->unique();
+            $table->string('test_id')->primary();
             $table->string('test_iscode');
             $table->string("test_name");
-            $table->string("test_material");
+            $table->string('test_material');
+            $table->foreign("test_material")
+            ->references('material_id')->on('materials');
             $table->string("test_rate");
             $table->string("test_rate_mes");
             $table->string("test_rate_cpwd");

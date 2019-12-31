@@ -73,13 +73,13 @@
                             <div class="row">
 
                             <div class="col-md-6 form-group input-group{{ $errors->has('inward_test') ? ' has-danger' : '' }}">
-                                    
-                            <input list="inward_test" name="inward_test" id="inward_test_datalist" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_test') ? ' is-invalid' : '' }}" placeholder="{{ __('Select Test') }}" value="{{ old('inward_test') }}" required autofocus>   
-                                <datalist id='inward_test'>
+                    
+                                <select class="form-control form-control-lg custom-select custom-select-lg font-weight-bold text-white bg-gradient-danger {{ $errors->has('inward_test') ? ' is-invalid' : '' }}" name="inward_test" id="inward_test_datalist">
+                                    <option selected disabled>-- Select Test -- </option>
                                 @foreach($tests as $test)
-                                        <option class="display-4" value="{{ $test['test_material'] }}">{{ $test['test_name'] }}</option>
+                                        <option class="display-4"  value="{{ $test['test_id'] }}">{{ $test['test_name'] }}</option>
                                         @endforeach
-                                </datalist>
+                                </select>
 
 
                                     <a href="{{ route('test.create') }}" class="input-group-append">
@@ -97,7 +97,7 @@
 
                                 <div class="col-md-6 form-group input-group {{ $errors->has('inward_material') ? ' has-danger' : '' }}">
                                     
-                                    <select name="inward_material" id="inward_material" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_material') ? ' is-invalid' : '' }}" required autofocus>
+                                    <select name="inward_material" id="inward_material_dropdown" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_material') ? ' is-invalid' : '' }}" required autofocus>
                                         <option selected disabled>No Test Selected</option>
                                         
                                         

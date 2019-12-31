@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Inwards;
-use App\Clients;
-use App\Tests;  
+use App\Tests;
 
-
-class InwardController extends Controller
+class LabController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Inwards $model)
+    public function index(Tests $model)
     {
-        return view('inward', ['inwards' => $model->paginate(15)]);
+        return view('lab', ['tests' => $model->paginate(15)]);
     }
 
     /**
@@ -25,15 +22,9 @@ class InwardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Inwards $models)
+    public function create()
     {
-        $inward = new Inwards;
-        $reference = reference($inward);
-        $key = keyGen($inward);
-        $clients = Clients::all(['client_id','client_name']);
-        $tests = Tests::all(['test_name','test_material','test_id']);
-        
-        return view('inward.create', compact('clients', 'tests','reference','key'));
+        //
     }
 
     /**
@@ -44,26 +35,7 @@ class InwardController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            
-        ]);
-
-        $inward = new Inwards;
-
-        $inward->inward_id = Keygen($inward);
-        $inward->inward_reference = $request->inward_reference; 
-        $inward->inward_client = $request->inward_client;
-        $inward->inward_test = $request->inward_test;
-        $inward->inward_date = $request->inward_date;
-        $inward->inward_report = "";
-        $inward->inward_description = $request->inward_description;
-        $inward->inward_report_date = $request->inward_report_date;
-
-        $inward->save();
-
-        return redirect()->route('inward.index')->withStatus(__('Inward Registered.'));
-
+        //
     }
 
     /**
