@@ -71,30 +71,7 @@
                                 </div>
                             @endif
 
-                            <HTA:APPLICATION  ID="test_worksheet_excel"
-                            APPLICATIONNAME="AERI - Test Worksheet"
                             
-                            BORDER="no"
-
-                            CAPTION="no"
-
-                            SHOWINTASKBAR="yes"
-
-                            SINGLEINSTANCE="yes"
-
-                            SYSMENU="yes"
-
-                            SCROLL="no"
-                            
-                            WINDOWSTATE="normal" />
-
-                            <script type="text/javascript" language="javascript">
-                                function OpenWorksheet() {
-                                    alert("shots are fired");
-                                WshShell = new ActiveXObject("WScript.Shell");
-                                WshShell.Run("excel.exe '{{$tests->test_worksheet}}'", 1, false);
-                                }
-                            </script>
 
                             
 

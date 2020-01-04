@@ -44,7 +44,7 @@ class TestController extends Controller
         
         $request->validate([
             
-            'test_worksheet' => 'required | file | mimes:xls,xlsx,xltx',
+            'test_worksheet' => 'required | file | mimes:xls,xlsx,xltx,pdf',
         ]);
         
         $worksheet_filename = "worksheet_".$key.".".$request->file("test_worksheet")->getClientOriginalExtension();

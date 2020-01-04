@@ -90,7 +90,7 @@ class LabController extends Controller
     {
         //$tests = DB::select("select * from tests where test_id = '{$test_id}' ");
         //$tests = DB::table('tests')->where('test_id',$test_id)->get();
-        $data = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration, test_worksheet, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $data = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration, test_worksheet, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id where test_id = '{$test_id}'");
         $tests = $data[0];
         return view('lab.perform', ['tests'=>$tests],compact($tests))->with('tests',$tests);
     }
