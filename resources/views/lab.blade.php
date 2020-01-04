@@ -59,24 +59,26 @@
 
                             <table id="fresh-table" class="table">
                                 <thead>
-                                <th data-field="id">ID</th>
-                                <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="iscode" data-sortable="true">IS Code</th>
+                                <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="material" data-sortable="true">Material</th>
                                 <th data-field="duration">Duration</th>
-                                <th data-field="rate">Rate</th>
-                                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                <th data-field="action">Action</th>
                                 </thead>
                                 <tbody>
                                 
-                                @foreach ($tests as $test)
+                                @foreach ($inwards as $inward)
                                 <tr>
-                                <td>{{ $test->test_id }}</td>
-                                <td>{{ $test->test_name }}</td>
-                                <td>{{ $test->test_iscode }}</td>
-                                <td>{{ $test->test_material }}</td>
-                                <td>{{ $test->test_duration }}</td>
-                                <td>{{ $test->test_status }}</td>
+                                <td>{{ $inward->test_iscode }}</td>
+                                <td>{{ $inward->test_name }}</td>
+                                <td>{{ $inward->material_name }}</td>
+                                <td>{{ $inward->test_duration }}</td>
+                                <td>
+                                  <a href="/perform/{{$inward->test_id}}" class="btn btn-round bg-gradient-green">
+                                  Perform
+                                  </a>
+
+                                </td>
                                 </tr>
                                 @endforeach
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tests;
+use DB;
 
 class LabController extends Controller
 {
@@ -14,7 +15,8 @@ class LabController extends Controller
      */
     public function index(Tests $model)
     {
-        return view('lab', ['tests' => $model->paginate(15)]);
+        $inward = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        return view('lab', ['inwards' => $inward ]);
     }
 
     /**
@@ -81,5 +83,15 @@ class LabController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    public function perform($test_id)
+    {
+        //$tests = DB::select("select * from tests where test_id = '{$test_id}' ");
+        //$tests = DB::table('tests')->where('test_id',$test_id)->get();
+        $data = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration, test_worksheet, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $tests = $data[0];
+        return view('lab.perform', ['tests'=>$tests],compact($tests))->with('tests',$tests);
     }
 }

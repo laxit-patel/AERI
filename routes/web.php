@@ -45,6 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Lab routes
 	Route::get('/lab', 'LabController@index')->name('lab');
+	Route::get('/perform/{test_id}', 'LabController@perform')->name('perform');
+
+	//downlaoding test worksheet using routes
+	Route::get('/download',function(){
+		$path = request()->path;
+        $chunks = explode("\\",$path);
+        $filename = end($chunks);
+		return Response::download($path,$filename);
+	});
 
 	//ajax routes
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');

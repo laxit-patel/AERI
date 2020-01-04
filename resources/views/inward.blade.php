@@ -4,7 +4,7 @@
 @push('css')
 <!-- Fresh Bootrsap Table-->
 <link type="text/css" href="{{ asset('argon') }}/vendor/fresh-table/fresh-bootstrap-table.css" rel="stylesheet">
-        
+<link type="text/css" href="{{ asset('argon') }}/vendor/modal/modal.css" rel="stylesheet">      
 @endpush
 
 @section('content')
@@ -92,6 +92,12 @@
 
         @include('layouts.footers.auth')
     </div>
+    
+
+    <div id="assign" class="modal">
+        <p>Thanks for clicking. That felt good.</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div>
 @endsection
 
 @push('js')
@@ -102,6 +108,7 @@
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
     <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>
+    <script src="{{ asset('argon') }}/vendor/modal/modal.js"></script>
 
     <script type="text/javascript">
     var $table = $('#fresh-table')
@@ -126,7 +133,7 @@
 
     function operateFormatter(value, row, index) {
       return [
-        '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+        '<a href="#assign" rel="modal:open" >',
           '<i class="fa fa-bong text-cyan"></i>',
         '</a>',
         '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',

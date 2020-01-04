@@ -19,7 +19,7 @@ class InwardController extends Controller
     public function index()
     {
         //$inwards_data = App\Inwards::with('tests')-get();
-        $inward = DB::select("select inward_id, inward_status, inward_report_date, inward_test,client_name, test_id, test_name, test_material, material_id, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $inward = DB::select("select inward_id, inward_status, inward_client, inward_report_date, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
         
         return view('inward', ['inwards' => $inward ]);
     }
