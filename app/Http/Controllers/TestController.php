@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Tests;
 use App\Materials;
 use Illuminate\Http\Request;
+use DB;
 
 class TestController extends Controller
 {
@@ -74,14 +75,6 @@ class TestController extends Controller
 
     }
 
-    public function ajax($id)
-    {
-    
-        $test = Tests::all()->where('test_id',$id)->first();
-        $materials = Materials::all()->where('material_id',$test->test_material)->first();
-        return $materials;
-    }
-
     /**
      * Display the specified resource.
      *
@@ -125,5 +118,23 @@ class TestController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ajax($id)
+    {
+    
+        $test = Tests::all()->where('test_id',$id)->first();
+        $materials = Materials::all()->where('material_id',$test->test_material)->first();
+        return $materials;
+    }
+
+    public function phase(Request $request)
+    {
+        $count = Tests::where('test_id',$request->test_id)->update(
+            array(
+                'test_phase' => $request->phase
+            )
+        );     
+        return $count;
     }
 }

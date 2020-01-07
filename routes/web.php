@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//ajax routes
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');
 	Route::get('/getTest/{id}', 'TestController@ajax');
+	Route::get('/updateTestPhase', 'TestController@phase');
 
 });
 

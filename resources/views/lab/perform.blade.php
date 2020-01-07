@@ -7,7 +7,9 @@
     ])   
 
     <div class="container-fluid mt--7">
+    
         <div class="row">
+        
             <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
                 <div class="card card-profile shadow">
                     <div class="row justify-content-center">
@@ -37,6 +39,7 @@
                             <h3>
                                 {{ $tests->test_name }}
                             </h3>
+                            
                             <div class="h5 font-weight-300">
 
                             </div>
@@ -69,41 +72,107 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            @endif
+                            @endif   
 
-                            
+                            <div class="text-center row">
 
-                            
-
-                            <div class="text-center">
+                                    <div class="col-md-6">
                                     <a href="/download?path={{$tests->test_worksheet}}"  class="btn btn-block btn-lg btn-success mt-4">{{ __('Download Worksheet Format') }}</a>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                    <a href="/download?path={{$tests->test_worksheet}}"  class="btn btn-block btn-lg btn-primary mt-4">{{ __('Download Report Format') }}</a>
+                                    </div>
+
                                 </div>
                                 <hr>
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}" required autofocus>
 
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
+                                <div class="progress-container ">
 
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
+                                
+
+                                <div class="card progress-card bg-gradient-cyan card-stats  mb-lg-0" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">First Phase</h5>
+                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                            
+                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/1"></button>
+
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                                <div class="card progress-card bg-gradient-cyan card-stats  mb-lg-0" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Second Phase</h5>
+                                                <span class="h2 font-weight-bold mb-0">Testing</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                            
+                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/2"></button>
+
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
+
+                                <div class="card progress-card bg-gradient-cyan card-stats  mb-lg-0" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Third Phase</h5>
+                                                <span class="h2 font-weight-bold mb-0">Worksheet</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                            
+                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/3"></button>
+
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <div class="card progress-card bg-gradient-cyan card-stats  mb-lg-0" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Fourth Phase</h5>
+                                                <span class="h2 font-weight-bold mb-0">Reports</span>
+                                            </div>
+                                            <div class="col-auto ">
+                                            
+                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/4"></button>
+
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                </div>
+
+                                <hr>
+
+                                <span class="mr-2 progress-meter"></span>
+                                <div>
+                                <div class="progress" >
+                                    <div class="progress-bar bg-info" role="progressbar" id="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                </div>
+                                </div>
+
+
+                                <div class="btn-group " role="group" style="width:100%">
+                                <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
+                                <button type="submit" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</button>
+                                </div>
+                                
+                                    
+                                
                             </div>
                         </form>
                         

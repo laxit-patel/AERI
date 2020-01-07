@@ -26,6 +26,8 @@ class CreateTest extends Migration
             $table->string("test_rate_isro");
             $table->string("test_worksheet");
             $table->string("test_duration");
+            $table->string("test_assignment")->default('none');
+            $table->enum("test_phase", array(0,1,2,3,4))->default(0);
             $table->timestamps();
         });
     }
