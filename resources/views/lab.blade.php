@@ -43,7 +43,7 @@
                             </div>
                         @endif
                     </div>
-                        
+                    
                             <div class="fresh-table full-color-blue">
                             <!--
                             Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
@@ -168,8 +168,6 @@
         alert('You pressed on Alert')
       })
     })
-
-   
   </script>
 
 @endpush

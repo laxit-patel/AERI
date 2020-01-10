@@ -132,7 +132,7 @@ class TestController extends Controller
     {
         $count = Tests::where('test_id',$request->test_id)->update(
             array(
-                'test_phase' => $request->phase
+                $request->phase => 1
             )
         );     
         return $count;

@@ -19,52 +19,116 @@ $("#inward_test_datalist").on('change', function () {
                $("#inward_material_dropdown").html("<option value='"+ data.material_id+"'>"+ data.material_name +"</option>");
             }
          });
-
-        
     }
 });
 
 //login for test prgress phases
 $('.progress-btn').append("<i class='fas fa-exclamation-circle text-white'></i>");
+
 var progress_bar = 0;
-$('.progress-meter').text(progress_bar+'%');
-$('.submit-test').prop('disabled',true);
+$('.progress-meter').text(progress_bar + '%');
+$('.submit-test').prop('disabled', true);
+
+var phase_one = document.getElementById("phase_one").getAttribute('data-status');
+var phase_two = document.getElementById("phase_two").getAttribute('data-status');
+var phase_three =  document.getElementById("phase_three").getAttribute('data-status');
+var phase_four =  document.getElementById("phase_four").getAttribute('data-status');
+
+if(phase_one == 0 && phase_two == 0 && phase_three == 0 && phase_four == 0)
+{
+    $('#phase_one').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_two').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_two').addClass('disabled');
+    $('#phase_three').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_three').addClass('disabled');
+    $('#phase_four').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_four').addClass('disabled');
+    $('.progress-meter').text('0%');
+    $('#progress-bar').css('width','0%');
+}
+else if(phase_one == 1 && phase_two == 0 && phase_three == 0 && phase_four == 0)
+{
+    $('#phase_one').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_one').removeClass('bg-danger');
+    $('#phase_one').addClass('bg-success disabled');
+    $('#phase_two').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_three').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_three').addClass('disabled');
+    $('#phase_four').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_four').addClass('disabled');
+    $('.progress-meter').text('25%');
+    $('#progress-bar').css('width','25%');
+}
+else if(phase_one == 1 && phase_two == 1 && phase_three == 0 && phase_four == 0)
+{
+    $('#phase_one').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_one').removeClass('bg-danger');
+    $('#phase_one').addClass('bg-success disabled');
+    $('#phase_two').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_two').removeClass('bg-danger');
+    $('#phase_two').addClass('bg-success disabled');
+    $('#phase_three').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_three').removeClass('disabled');
+    $('#phase_four').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_four').addClass('disabled');  
+    $('.progress-meter').text('50%');
+    $('#progress-bar').css('width','50%');
+}
+else if(phase_one == 1 && phase_two == 1 && phase_three == 1 && phase_four == 0)
+{
+    $('#phase_one').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_one').removeClass('bg-danger');
+    $('#phase_one').addClass('bg-success disabled');
+    $('#phase_two').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_two').removeClass('bg-danger');
+    $('#phase_two').addClass('bg-success disabled');
+    $('#phase_three').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_three').removeClass('bg-danger');
+    $('#phase_three').addClass('bg-success disabled');
+    $('#phase_four').append("<i class='fas fa-exclamation-circle text-white'></i>");
+    $('#phase_four').removeClass('disabled'); 
+    $('.progress-meter').text('75%');
+    $('#progress-bar').css('width','75%');
+}
+else if(phase_one == 1 && phase_two == 1 && phase_three == 1 && phase_four == 1)
+{
+    $('#phase_one').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_one').removeClass('bg-danger');
+    $('#phase_one').addClass('bg-success disabled');
+    $('#phase_two').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_two').removeClass('bg-danger');
+    $('#phase_two').addClass('bg-success disabled');
+    $('#phase_three').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_three').removeClass('bg-danger');
+    $('#phase_three').addClass('bg-success disabled');
+    $('#phase_four').append("<i class='fas fa-check text-white'></i>");
+    $('#phase_four').removeClass('bg-danger');
+    $('#phase_four').addClass('bg-success disabled');
+    $('.submit-test').prop('disabled',false); 
+    $('.progress-meter').text('100%');
+    $('#progress-bar').css('width','100%');
+}
+
 function progress(button)
 {
-    var data = button.getAttribute('data-phase');
-    var test_id = data.split('/')[0];
-    var phase = data.split('/')[1];
-
     
+    var test_id = document.getElementById('test_id').value
+    var phase = button.getAttribute('data-phase');
+    var status = button.getAttribute('data-status');
     $.ajax({
         type:'GET',
         url:'/updateTestPhase',
         data:{
             'test_id':test_id,
-            'phase':phase
+            'phase':phase,
+            'status':status
         },
         success:function(data) {
             if(data == 1)
             {
-                console.log('success is fired');
-                $(button).empty();
-                $(button).removeClass('bg-danger');
-                $(button).addClass('bg-success');
-                $(button).append("<i class='fas fa-check text-white'></i>");
-                $(button).prop('disabled',true)
-                progress_bar = progress_bar + 25;
-                var width = progress_bar+"%";
-                $('.progress-meter').text(width);
-                $('#progress-bar').css('width',width);
-                if(progress_bar == 100)
-                {
-                    $('.submit-test').prop('disabled',false);
-                }
+                location.reload();
             }
         }
     });
-  
-    return false;
-    
 }
 

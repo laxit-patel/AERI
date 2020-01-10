@@ -74,6 +74,8 @@
                                 </div>
                             @endif   
 
+                            <input type="hidden" value="{{ $tests->test_id}}" id="test_id">
+
                             <div class="text-center row">
 
                                     <div class="col-md-6">
@@ -99,9 +101,7 @@
                                                 <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            
-                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/1"></button>
-
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_one" data-phase="test_phase_one" data-status="{{$tests->test_phase_one}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -112,12 +112,10 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Second Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Testing</span>
+                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            
-                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/2"></button>
-
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_two" data-phase="test_phase_two" data-status="{{$tests->test_phase_two}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -128,12 +126,10 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Third Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Worksheet</span>
+                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            
-                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/3"></button>
-
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_three" data-phase="test_phase_three" data-status="{{$tests->test_phase_three}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -144,16 +140,15 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Fourth Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Reports</span>
+                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            
-                                            <button type="button" onclick="progress(this)" class=" btn btn-round bg-danger text-white progress-btn" id="progress-btn" data-phase="{{$tests->test_id}}/4"></button>
-
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_four" data-phase="test_phase_four" data-status="{{$tests->test_phase_four}}"></button>
                                             </div>
                                         </div> 
                                     </div>
                                 </div>
+
                                 </div>
 
                                 <hr>

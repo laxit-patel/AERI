@@ -27,7 +27,10 @@ class CreateTest extends Migration
             $table->string("test_worksheet");
             $table->string("test_duration");
             $table->string("test_assignment")->default('none');
-            $table->enum("test_phase", array(0,1,2,3,4))->default(0);
+            $table->boolean("test_phase_one")->default(0);
+            $table->boolean("test_phase_two")->default(0);
+            $table->boolean("test_phase_three")->default(0);
+            $table->boolean("test_phase_four")->default(0);
             $table->timestamps();
         });
     }
