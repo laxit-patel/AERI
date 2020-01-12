@@ -4,7 +4,7 @@
 @push('css')
 <!-- Fresh Bootrsap Table-->
 <link type="text/css" href="{{ asset('argon') }}/vendor/fresh-table/fresh-bootstrap-table.css" rel="stylesheet">
-<link type="text/css" href="{{ asset('argon') }}/vendor/modal/modal.css" rel="stylesheet">      
+  
 @endpush
 
 @section('content')
@@ -59,23 +59,46 @@
 
                             <table id="fresh-table" class="table">
                                 <thead>
-                                <th data-field="id">ID</th>
                                 <th data-field="client" data-sortable="true">Client</th>
                                 <th data-field="test" data-sortable="true">Test</th>
                                 <th data-field="deadline">Deadline</th>
                                 <th data-field="material">Material</th>
-                                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                <th data-field="assign">Assign To</th>
+                                
                                 </thead>
                                 <tbody>
                                 
                                 @foreach ($inwards as $inward)
                                 <tr>
-                                <td>{{ $inward->inward_id }}</td>
                                 <td>{{ $inward->client_name }}</td>
                                 <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->inward_report_date }}</td>
                                 <td>{{ $inward->material_name }}</td>
-                                
+                                <td>
+                                  @if( $inward->inward_assign_to == NULL )
+                                  
+                                   <select class="custom-select custom-select-sm">
+                                     <option selected disabled>--Assign--</option>
+                                     @foreach ($users as $user)
+                                      <option value="{{ $user->id }}"> {{$user->name }}</option>
+                                     @endforeach
+                                   </select> 
+                                  
+                                  @else
+                                  
+                                    {{$inward->inward_assign_to}}
+                                  @endif
+                                </td>
+
+                                <!-- open this td when edit functionality is available
+                                <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class=" icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fas fa-edit "></i>
+                                </a>
+                                </div>
+                                </td>
+                                -->
                                 </tr>
                                 @endforeach
 
@@ -94,10 +117,9 @@
     </div>
     
 
-    <div id="assign" class="modal">
-        <p>Thanks for clicking. That felt good.</p>
-        <a href="#" rel="modal:close">Close</a>
-    </div>
+   
+
+
 @endsection
 
 @push('js')
@@ -107,8 +129,7 @@
     @push('js')
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-    <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>
-    <script src="{{ asset('argon') }}/vendor/modal/modal.js"></script>
+    <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>  
 
     <script type="text/javascript">
     var $table = $('#fresh-table')
@@ -133,8 +154,8 @@
 
     function operateFormatter(value, row, index) {
       return [
-        '<a href="#assign" rel="modal:open" >',
-          '<i class="fa fa-bong text-cyan"></i>',
+        '<a href="welcome" rel="modal:open" >',
+          '<i class="fa fa-microscope text-cyan"></i>',
         '</a>',
         '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
           '<i class="fa fa-edit"></i>',

@@ -77,7 +77,6 @@
                                   <a href="/perform/{{$inward->test_id}}" class="btn btn-round bg-gradient-green">
                                   Perform
                                   </a>
-
                                 </td>
                                 </tr>
                                 @endforeach

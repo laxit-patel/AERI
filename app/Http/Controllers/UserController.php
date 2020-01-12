@@ -38,8 +38,15 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
-
+        $user = new User;
+        $input = [];
+        $input = $request->all();
+        $input['id'] = keyGen($user);
+        $input['name'] = $request->get('name');
+        $input['email'] = $request->get('email');
+        $input['role'] = $request->get('role');
+        $input['password'] =  Hash::make($request->get('password'));
+        $model::create($input);
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 

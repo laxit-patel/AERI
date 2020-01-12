@@ -19,9 +19,9 @@ class InwardController extends Controller
     public function index()
     {
         //$inwards_data = App\Inwards::with('tests')-get();
-        $inward = DB::select("select inward_id, inward_status, inward_client, inward_report_date, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
-        
-        return view('inward', ['inwards' => $inward ]);
+        $inward = DB::select("select inward_id, inward_status, inward_client, inward_report_date,inward_assign_to, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $users = DB::select("select id,name from users where role ='engineer' ");
+        return view('inward', ['inwards' => $inward , 'users' => $users]);
     }
 
     /**
@@ -61,6 +61,7 @@ class InwardController extends Controller
         $inward->inward_test = $request->inward_test;
         $inward->inward_date = $request->inward_date;
         $inward->inward_report = "";
+        $inward->inward_assign_to = NULL; 
         $inward->inward_description = $request->inward_description;
         $inward->inward_report_date = $request->inward_report_date;
 

@@ -10,13 +10,23 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primarykey = 'material_id';
+    public $incrementing = false;
+
+    const Alias = "USER";
+    const PK = "id";
+
+    public function inwards()
+    {
+        return $this->belongsTo('App\Inwards');
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id','name', 'email', 'role','password',
     ];
 
     /**

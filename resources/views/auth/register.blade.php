@@ -42,6 +42,23 @@
                                 @endif
                             </div>
                             
+                            <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                    
+                                
+                                    <select name="role" class="form-control custom-select custom-select-lg {{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                    <option selected disabled>--Select Role--</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="engineer">Engineer</option>
+                                    <optoin value="accountant">Accountant</option>
+                                    <option value="manager">Manager</option>
+                                    </select>
+                                    @if ($errors->has('role'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">

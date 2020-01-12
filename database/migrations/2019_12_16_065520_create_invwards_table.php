@@ -17,10 +17,11 @@ class CreateInvwardsTable extends Migration
             $table->string('inward_id')->primary();
             $table->string('inward_reference');
             $table->string('inward_client');
-            $table->foreign("inward_client")
-            ->references('client_id')->on('clients');
+            $table->foreign("inward_client")->references('client_id')->on('clients');
             $table->string("inward_test");
             $table->foreign("inward_test")->references('test_id')->on('tests');
+            $table->string('inward_assign_to')->default(NULL)->nullable();
+            $table->foreign('inward_assign_to')->references('id')->on('users');
             $table->string("inward_date");
             $table->string("inward_report_date");
             $table->string("inward_report");

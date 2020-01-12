@@ -18,4 +18,8 @@ class Inwards extends Model
     {
         return $this->hasMany('App\Tests');
     }
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
