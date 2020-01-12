@@ -43,6 +43,22 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-role">{{ __('Role') }}</label>
+                                
+                                    <select name="role" class="form-control custome-select {{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                    <option selected disabled>--Select Role--</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="engineer">Engineer</option>
+                                    <optoin value="accountant">Accountant</option>
+                                    <option value="manager">Manager</option>
+                                    </select>
+                                    @if ($errors->has('role'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
