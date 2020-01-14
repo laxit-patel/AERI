@@ -15,7 +15,7 @@ class LabController extends Controller
      */
     public function index(Tests $model)
     {
-        $inward = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration,  inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $inward = DB::select("select inward_id,name, id inward_status, test_iscode, inward_report_date, test_duration,  inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id inner join users u on u.id = i.inward_assign_to where i.inward_status = 'Enlisted'");
         return view('lab', ['inwards' => $inward ]);
     }
 

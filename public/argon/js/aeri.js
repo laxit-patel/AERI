@@ -22,12 +22,15 @@ $("#inward_test_datalist").on('change', function () {
     }
 });
 
+
+
+
 //login for test prgress phases
 $('.progress-btn').append("<i class='fas fa-exclamation-circle text-white'></i>");
 
 var progress_bar = 0;
 $('.progress-meter').text(progress_bar + '%');
-$('.submit-test').prop('disabled', true);
+$('.submit-test').addClass('disabled');
 
 var phase_one = document.getElementById("phase_one").getAttribute('data-status');
 var phase_two = document.getElementById("phase_two").getAttribute('data-status');
@@ -103,10 +106,10 @@ else if(phase_one == 1 && phase_two == 1 && phase_three == 1 && phase_four == 1)
     $('#phase_three').addClass('bg-success disabled');
     $('#phase_four').append("<i class='fas fa-check text-white'></i>");
     $('#phase_four').removeClass('bg-danger');
-    $('#phase_four').addClass('bg-success disabled');
-    $('.submit-test').prop('disabled',false); 
+    $('#phase_four').addClass('bg-success disabled'); 
     $('.progress-meter').text('100%');
     $('#progress-bar').css('width','100%');
+    $('.submit-test').removeClass('disabled');
 }
 
 function progress(button)

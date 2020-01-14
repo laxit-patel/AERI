@@ -22,7 +22,7 @@
                             <div class="col">
                                 <ul class="nav nav-pills justify-content-end">
                                     <li class="nav-item mr-2 mr-md-0" data-toggle="chart" >
-                                        <a href="{{ route('test.create') }}" class="nav-link py-2 px-3 active bg-success" >
+                                        <a href="{{ route('inward.index') }}" class="nav-link py-2 px-3 active bg-success" >
                                             <span class="d-none d-md-block">Add New</span>
                                             <span class="d-md-none">+</span>    
                                         </a>
@@ -59,7 +59,7 @@
 
                             <table id="fresh-table" class="table">
                                 <thead>
-                                <th data-field="iscode" data-sortable="true">IS Code</th>
+                                <th data-field="iscode" data-sortable="true">Assign To</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="material" data-sortable="true">Material</th>
                                 <th data-field="duration">Duration</th>
@@ -69,7 +69,7 @@
                                 
                                 @foreach ($inwards as $inward)
                                 <tr>
-                                <td>{{ $inward->test_iscode }}</td>
+                                <td>{{ $inward->name }}</td>
                                 <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->material_name }}</td>
                                 <td>{{ $inward->test_duration }}</td>

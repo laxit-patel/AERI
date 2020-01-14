@@ -163,7 +163,7 @@
 
                                 <div class="btn-group " role="group" style="width:100%">
                                 <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <button type="submit" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</button>
+                                <a href="/completed/{{ $tests->inward_id }}" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
                                 </div>
                                 
                                     

@@ -105,33 +105,14 @@
                         </ul>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="#navbar-lab" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fa fa-microscope text-cyan" ></i>
-                        <span class="nav-link-text text-cyan" >{{ __('Lab') }}</span>
-                    </a>
-
-                    <div class="collapse " id="navbar-lab">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('lab') }}">
-                                    {{ __('Tests') }}
-                                </a>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                </li>
-
-               
                 
-               
                 <li class="nav-item">
-                    <a class="nav-link" href="/reports">
-                        <i class="ni ni-book-bookmark text-green"></i> {{ __('Reports') }}
+                    <a class="nav-link" href="{{ route('lab') }}">
+                        <i class="fas fa-microscope text-cyan
+                        "></i> {{ __('Laboratory') }}
                     </a>
                 </li>
+               
                 <li class="nav-item">
                     <a class="nav-link" href="/inward">
                         <i class="fas fa-sign-in-alt text-red

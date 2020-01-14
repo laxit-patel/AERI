@@ -57,5 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/getTest/{id}', 'TestController@ajax');
 	Route::get('/updateTestPhase', 'TestController@phase');
 
+	//assign inward to user
+	Route::get('assign/{inward}/to/{user}','InwardController@assign');
+
+	//test completed
+	Route::get('completed/{inward}', 'InwardController@status');
+
 });
 

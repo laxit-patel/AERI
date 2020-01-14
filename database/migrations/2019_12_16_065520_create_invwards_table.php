@@ -26,7 +26,7 @@ class CreateInvwardsTable extends Migration
             $table->string("inward_report_date");
             $table->string("inward_report");
             $table->string("inward_description");
-            $table->enum("inward_status", array('Enlisted','Lab','Report','Accounts','Paid','Delivered','Closed'));
+            $table->enum("inward_status", array('Enlisted','Tested','Paid','Completed'));
             $table->timestamps();
         });
     }

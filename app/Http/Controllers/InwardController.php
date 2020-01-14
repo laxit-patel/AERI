@@ -19,7 +19,8 @@ class InwardController extends Controller
     public function index()
     {
         //$inwards_data = App\Inwards::with('tests')-get();
-        $inward = DB::select("select inward_id, inward_status, inward_client, inward_report_date,inward_assign_to, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id");
+        $inward = DB::select("select inward_id, inward_status, inward_client, inward_report_date,inward_assign_to,name, id, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id left join users u on u.id = i.inward_assign_to");
+        
         $users = DB::select("select id,name from users where role ='engineer' ");
         return view('inward', ['inwards' => $inward , 'users' => $users]);
     }
@@ -71,6 +72,26 @@ class InwardController extends Controller
 
     }
 
+    public function assign($inward,$user)
+    {
+        //Inwards::where('inward_id',$inward)->update('inward_assign_to',$user);
+        $count = Inwards::where('inward_id',$inward)->update(
+            array(
+                'inward_assign_to' => $user
+            )
+        );
+        return redirect()->route('inward.index')->withStatus(__('Task Assigned'));
+    }
+
+    public function status($inward)
+    {
+        $count = Inwards::where('inward_id',$inward)->update(
+            array(
+                'inward_status' => 'Tested'
+            )
+        );
+        return redirect()->route('lab')->withStatus(__('Test Completed'));
+    }
     /**
      * Display the specified resource.
      *

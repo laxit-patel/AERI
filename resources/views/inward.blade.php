@@ -64,12 +64,13 @@
                                 <th data-field="deadline">Deadline</th>
                                 <th data-field="material">Material</th>
                                 <th data-field="assign">Assign To</th>
+                                <th data-field="progress">Progress</th>
                                 
                                 </thead>
                                 <tbody>
                                 
                                 @foreach ($inwards as $inward)
-                                <tr>
+                                <tr >
                                 <td>{{ $inward->client_name }}</td>
                                 <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->inward_report_date }}</td>
@@ -77,19 +78,68 @@
                                 <td>
                                   @if( $inward->inward_assign_to == NULL )
                                   
-                                   <select class="custom-select custom-select-sm">
+                                   <select class="custom-select custom-select-sm" onchange="javascript:handleSelect(this)">
                                      <option selected disabled>--Assign--</option>
                                      @foreach ($users as $user)
-                                      <option value="{{ $user->id }}"> {{$user->name }}</option>
+                                      <option value="assign/{{ $inward->inward_id }}/to/{{$user->id }}" > {{ $user->name }} </option>
                                      @endforeach
                                    </select> 
                                   
                                   @else
                                   
-                                    {{$inward->inward_assign_to}}
+                                    {{$inward->name}}
                                   @endif
                                 </td>
 
+                                <td>
+                                @if($inward->inward_status == "Enlisted")
+                                <div class="d-flex align-items-center">
+                                  <span class="mr-2">25%</span>
+                                  <div>
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @elseif($inward->inward_status == "Tested")
+                                <div class="d-flex align-items-center">
+                                  <span class="mr-2">50%</span>
+                                  <div>
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @elseif($inward->inward_status == "Paid")
+                                <div class="d-flex align-items-center">
+                                  <span class="mr-2">75%</span>
+                                  <div>
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @elseif($inward->inward_status == "Completed")
+                                <div class="d-flex align-items-center">
+                                  <span class="mr-2">100%</span>
+                                  <div>
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @else
+                                <div class="d-flex align-items-center">
+                                  <span class="mr-2">0</span>
+                                  <div>
+                                    <div class="progress">
+                                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @endif
+
+                                </td>
                                 <!-- open this td when edit functionality is available
                                 <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -130,6 +180,15 @@
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
     <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>  
+
+<!-- Handle Task Assignment -->
+<script type="text/javascript">
+function handleSelect(elm)
+{
+window.location = elm.value;
+}
+</script>
+<!-- task assignment ends -->
 
     <script type="text/javascript">
     var $table = $('#fresh-table')
