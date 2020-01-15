@@ -1,22 +1,42 @@
-<!-- Top navbar -->
-<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-    <div class="container-fluid">
-        <!-- Brand -->
-        
-        <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-gradient-indigo  ">
+       <div class="container-fluid">
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <!-- Search form -->
+
+           <!-- Navbar links -->
+           <ul class="navbar-nav align-items-center ml-md-auto">
+             <li class="nav-item d-xl-none">
+               <!-- Sidenav toggler -->
+               <div class="pr-3 sidenav-toggler sidenav-toggler-dark float-left" data-action="sidenav-pin" data-target="#sidenav-main">
+                 <div class="sidenav-toggler-inner">
+                   <i class="sidenav-toggler-line"></i>
+                   <i class="sidenav-toggler-line"></i>
+                   <i class="sidenav-toggler-line"></i>
+                 </div>
+               </div>
+             </li>
+  
+           </ul>
+           
+           
+
+           <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
             <div class="form-group mb-0">
-                <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Search" type="text">
+              <div class="input-group input-group-alternative input-group-merge">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
+                <input class="form-control" placeholder="Search" type="text">
+              </div>
             </div>
-        </form>
-        <!-- User -->
-        <ul class="navbar-nav align-items-center d-none d-md-flex">
-            <li class="nav-item dropdown">
+            <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </form>
+
+
+           <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+           <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
@@ -55,6 +75,7 @@
                     </a>
                 </div>
             </li>
-        </ul>
-    </div>
-</nav>
+           </ul>
+         </div>
+       </div>
+     </nav>

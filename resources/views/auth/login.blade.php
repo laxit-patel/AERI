@@ -4,13 +4,21 @@
     @include('layouts.headers.guest')
 
     <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="card bg-gradient-success shadow border-0">
-                    
-                    <div class="card-body px-lg-5 py-lg-5">
-                       
-                        <form role="form" method="POST" action="{{ route('login') }}">
+
+    <div class="col-lg-6 col-md-8 offset-3">
+          <div class="card card-profile bg-secondary ">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  
+                    <img src="{{ asset('argon') }}/img/brand/blue.png"  class=" img-responsive border-0 " />
+        
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-7 px-5">
+              
+            <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
@@ -44,19 +52,14 @@
                                 <button type="submit" class="btn btn-block bg-gradient-primary text-white btn-lg my-4">{{ __('Sign in') }}</button>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-12">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
-                                <small>{{ __('Forgot password?') }}</small>
-                            </a>
-                        @endif
-                    </div>
-                    
-                </div>
+
+
             </div>
+            
+          </div>
+          
         </div>
+      
+       
     </div>
 @endsection
