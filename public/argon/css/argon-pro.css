@@ -29635,3 +29635,16 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 {
     max-width: 200px;
 }
+
+
+/* user defined stylesheet starts from here */
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+

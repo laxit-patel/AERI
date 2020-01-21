@@ -58,7 +58,7 @@
                             </div>
 
                             <table id="fresh-table" class="table">
-                                <thead>
+                                <thead class="text-white bg-gradient-darker">
                                 <th data-field="client" data-sortable="true">Client</th>
                                 <th data-field="test" data-sortable="true">Test</th>
                                 <th data-field="deadline">Deadline</th>
@@ -70,8 +70,8 @@
                                 <tbody>
                                 
                                 @foreach ($inwards as $inward)
-                                <tr >
-                                <td>{{ $inward->client_name }}</td>
+                                <tr class="text-white ">
+                                <td  >{{ $inward->client_name }}</td>
                                 <td>{{ $inward->test_name }}</td>
                                 <td>{{ $inward->inward_report_date }}</td>
                                 <td>{{ $inward->material_name }}</td>

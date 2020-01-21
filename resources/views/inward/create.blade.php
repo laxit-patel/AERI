@@ -49,9 +49,9 @@
                                 <div class=" col-md-6 form-group input-group{{ $errors->has('inward_client') ? ' has-danger' : '' }}">
                                     
                                     <select name="inward_client" id="input-material" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
-                                        <option class="form-input " selected disabled>Select Client</option>
+                                        <option  selected disabled>Select Client</option>
                                         @foreach($clients as $client)
-                                        <option class="display-4 " value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
+                                        <option class="bg-danger display-4" value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
                                         @endforeach
                                     </select>
 
@@ -77,7 +77,7 @@
                                 <select class="form-control form-control-lg custom-select custom-select-lg font-weight-bold text-white bg-gradient-danger {{ $errors->has('inward_test') ? ' is-invalid' : '' }}" name="inward_test" id="inward_test_datalist">
                                     <option selected disabled>-- Select Test -- </option>
                                 @foreach($tests as $test)
-                                        <option class="display-4"  value="{{ $test['test_id'] }}">{{ $test['test_name'] }}</option>
+                                        <option class="display-4 bg-danger"  value="{{ $test['test_id'] }}">{{ $test['test_name'] }}</option>
                                         @endforeach
                                 </select>
 

@@ -60,53 +60,47 @@
                     </div>
                     
                     <div class="fresh-table full-color-azure">
-        <!--
-          Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
-          Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-        -->
-          <div class="toolbar">
-            <button id="alertBtn" class="btn btn-default">Alert</button>
-          </div>
+                            <!--
+                              Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+                              Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                            -->
+                              <div class="toolbar">
+                                <button id="alertBtn" class="btn btn-default">Alert</button>
+                              </div>
 
-          <table id="fresh-table" class="table">
-            <thead>
-              <th data-field="id">ID</th>
-              <th data-field="name" data-sortable="true">Name</th>
-              <th data-field="email" data-sortable="true">Email</th>
-              <th data-field="phone" data-sortable="true">Phone</th>
-              <th data-field="address">Address</th>
-              <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
-            </thead>
-            <tbody>
-              
-            @foreach ($clients as $client)
-       
+                              <table id="fresh-table" class="table">
+                                <thead class="text-white">
+                                  <th data-field="id">ID</th>
+                                  <th data-field="name" data-sortable="true">Name</th>
+                                  <th data-field="email" data-sortable="true">Email</th>
+                                  <th data-field="phone" data-sortable="true">Phone</th>
+                                  <th data-field="address">Address</th>
+                                  <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                                </thead>
+                                <tbody>
+                                  
+                                @foreach ($clients as $client)
+                          
 
-             <tr>
-            
-            <td>{{ $client->client_id }}</td>
-            <td>{{ $client->client_name }}</td>
-            <td>{{ $client->client_email }}</td>
-            <td>{{ $client->client_phone }}</td>
-            <td>{{ $client->client_address }}</td>
-             
-            </tr>
-            
- 
-         @endforeach
-            
-            </tbody>
-          </table>
-        </div>
-                     
+                                <tr class="text-white">
+                                
+                                <td>{{ $client->client_id }}</td>
+                                <td>{{ $client->client_name }}</td>
+                                <td>{{ $client->client_email }}</td>
+                                <td>{{ $client->client_phone }}</td>
+                                <td>{{ $client->client_address }}</td>
+                                
+                                </tr>
+                                
+                    
+                            @endforeach
+                                
+                                </tbody>
+                              </table>
+                            </div>
+                                        
 
-</div>
-
-
-
-
-
-
+                    </div>
 
                     </div>
                 </div>

@@ -58,7 +58,7 @@
                             </div>
 
                             <table id="fresh-table" class="table">
-                                <thead>
+                                <thead class="text-white bg-gradient-darker">
                                 <th data-field="id">ID</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="iscode" data-sortable="true">IS Code</th>
@@ -70,7 +70,7 @@
                                 <tbody>
                                 
                                 @foreach ($tests as $test)
-                                <tr>
+                                <tr class="text-white">
                                 <td>{{ $test->test_id }}</td>
                                 <td>{{ $test->test_name }}</td>
                                 <td>{{ $test->test_iscode }}</td>
