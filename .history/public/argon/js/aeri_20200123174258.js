@@ -40,8 +40,8 @@ var phase_four =  document.getElementById("phase_four").getAttribute('data-statu
 if(phase_one == 0 && phase_two == 0 && phase_three == 0 && phase_four == 0)
 {
     $('#phase_one').append("<i class='fas fa-exclamation-circle text-white'></i>");
-    $('#phase_two').append("<i class='fas fa-exclamation-circle text-white'></i>");
-    $('#phase_two').addClass('disabled');
+    $('#phase_two').replaceWith("<i class='fas fa-exclamation-circle text-white'></i>");
+    
     $('#phase_three').append("<i class='fas fa-exclamation-circle text-white'></i>");
     $('#phase_three').addClass('disabled');
     $('#phase_four').append("<i class='fas fa-exclamation-circle text-white'></i>");

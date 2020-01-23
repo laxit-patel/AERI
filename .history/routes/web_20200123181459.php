@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Lab routes
 	Route::get('/lab', 'LabController@index')->name('lab');
-	Route::get('/perform/{inward_id}', 'LabController@perform')->name('perform');
+	Route::get('/perform/{test_id}', 'LabController@perform')->name('perform');
 
 	//downlaoding test worksheet using routes
 	Route::get('/download',function(){

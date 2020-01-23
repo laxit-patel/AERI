@@ -55,7 +55,7 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
-                            <h3 class="col-12 mb-0">{{ $tests->material_name }}</h3>
+                            <h3 class="col-12 mb-0">{{ $tests->material_name }} </h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -163,8 +163,8 @@
 
                                 <div class="btn-group " role="group" style="width:100%">
                                 <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/completed/{{ $tests->inward_id }}" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
-                                </div>
+                                <a href="/completed/{{tests->inward_id }}" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
+                                </div> $
                                 
                                     
                                 

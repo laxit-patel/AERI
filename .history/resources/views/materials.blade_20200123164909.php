@@ -11,29 +11,9 @@
     @include('layouts.headers.cards')
     
     <div class="container-fluid mt--7">
+
         <div class="row">
-            <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="card bg-gradient-cyan shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col text-white">
-                                Laboratory
-                            </div>
-                            <div class="col">
-                                <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" >
-                                        <a href="{{ route('inward.index') }}" class="nav-link py-2 px-3 active bg-success" >
-                                            <span class="d-none d-md-block">Add New</span>
-                                            <span class="d-md-none">+</span>    
-                                        </a>
-                                    </li>
-                                   
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <div class="col-12">
+        <div class="col-12">
                         @if (session('status'))
                             <div class="alert text-white alert-success text-default alert-dismissible fade show" role="alert">
                                 {{ session('status') }}
@@ -42,51 +22,44 @@
                                 </button>
                             </div>
                         @endif
-                    </div>
-                    
-                            <div class="fresh-table full-color-blue">
+                    </div>    
+            <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="fresh-table full-color-blue">
                             <!--
                             Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
                             Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
                             -->
                             <div class="toolbar">
+                              
                             &nbsp;
-                            <div class=" icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                <i class="fas fa-vial"></i>
-                                    </div>
+                            <div class=" icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                <i class="fas fa-atom "></i> 
+                                    </div> &nbsp;Materials
                                 
                             </div>
 
                             <table id="fresh-table" class="table">
-                                <thead class="text-white bg-gradient-darker">
-                                <th data-field="iscode" data-sortable="true">Assign To</th>
+                                <thead class="text-white bg-gradient-darker py--1">
+                                <th data-field="id">ID</th>
                                 <th data-field="name" data-sortable="true">Name</th>
-                                <th data-field="material" data-sortable="true">Material</th>
-                                <th data-field="duration">Duration</th>
-                                <th data-field="action">Action</th>
+                                <th data-field="iscode" data-sortable="true">Description</th>
+                                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
                                 </thead>
-                                <tbody class="text-white">
+                                <tbody>
                                 
-                                @foreach ($inwards as $inward)
-                                <tr>
-                                <td>{{ $inward->name }}</td>
-                                <td>{{ $inward->test_name }}</td>
-                                <td>{{ $inward->material_name }}</td>
-                                <td>{{ $inward->test_duration }}</td>
-                                <td>
-                                  <a href="/perform/{{$inward->inward_id}}" class="btn btn-round bg-gradient-green">
-                                  Perform
-                                  </a>
-                                </td>
+                                @foreach ($materials as $material)
+                                <tr class="text-white">
+
+                                <td>{{ $material->material_id }}</td>
+                                <td>{{ $material->material_name }}</td>
+                                <td>{{ $material->material_description }}</td>
+                               
                                 </tr>
                                 @endforeach
 
                                 </tbody>
                             </table>
-                            </div>    
-
-                    </div>
-                </div>
+                            </div>  
             </div>
             
         </div>
@@ -167,6 +140,8 @@
         alert('You pressed on Alert')
       })
     })
+
+   
   </script>
 
 @endpush

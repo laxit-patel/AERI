@@ -74,7 +74,7 @@
                                 </div>
                             @endif   
 
-                            <input type="hidden" value="{{ $tests->inward_id}}" id="inward_id">
+                            <input type="hidden" value="{{ $tests->test_id}}" id="test_id">
 
                             <div class="text-center row">
 
@@ -101,7 +101,7 @@
                                                 <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_one" data-phase="inward_phase_one" data-status="{{$tests->inward_phase_one}}"></button>
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_one" data-phase="test_phase_one" data-status="{{$tests->test_phase_one}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -115,7 +115,7 @@
                                                 <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_two" data-phase="inward_phase_two" data-status="{{$tests->inward_phase_two}}"></button>
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_two" data-phase="test_phase_two" data-status="{{$tests->test_phase_two}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -129,7 +129,7 @@
                                                 <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_three" data-phase="inward_phase_three" data-status="{{$tests->inward_phase_three}}"></button>
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_three" data-phase="test_phase_three" data-status="{{$tests->test_phase_three}}"></button>
                                             </div>
                                         </div> 
                                     </div>
@@ -143,7 +143,7 @@
                                                 <span class="h2 font-weight-bold mb-0">Preparations</span>
                                             </div>
                                             <div class="col-auto ">
-                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_four" data-phase="inward_phase_four" data-status="{{$tests->inward_phase_four}}"></button>
+                                            <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_four" data-phase="test_phase_four" data-status="{{$tests->test_phase_four}}"></button>
                                             </div>
                                         </div> 
                                     </div>

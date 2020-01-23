@@ -15,7 +15,7 @@ class LabController extends Controller
      */
     public function index(Tests $model)
     {
-        $inward = DB::select("select inward_id,name, id, inward_status, test_iscode, inward_report_date, test_duration,  inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id inner join users u on u.id = i.inward_assign_to where i.inward_status = 'Enlisted'");
+        $inward = DB::select("select inward_id,name, id inward_status, test_iscode, inward_report_date, test_duration,  inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id inner join users u on u.id = i.inward_assign_to where i.inward_status = 'Enlisted'");
         return view('lab', ['inwards' => $inward ]);
     }
 
@@ -86,12 +86,11 @@ class LabController extends Controller
     }
 
     
-    public function perform($inward_id)
+    public function perform($test_id)
     {
         //$tests = DB::select("select * from tests where test_id = '{$test_id}' ");
         //$tests = DB::table('tests')->where('test_id',$test_id)->get();
-       
-        $data = DB::select("select inward_id, inward_status, inward_phase_one, inward_phase_two, inward_phase_three, inward_phase_four, test_iscode, inward_report_date, test_duration, test_worksheet, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id where inward_id = '{$inward_id}'");
+        $data = DB::select("select inward_id, inward_status, test_iscode, inward_report_date, test_duration, test_worksheet, test_phase_one, test_phase_two, test_phase_three, test_phase_four, inward_test, test_id, test_name, test_material, material_id, material_name from inwards i inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id where test_id = '{$test_id}'");
         $tests = $data[0];
         return view('lab.perform', ['tests'=>$tests],compact($tests))->with('tests',$tests);
     }

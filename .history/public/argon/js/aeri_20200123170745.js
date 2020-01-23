@@ -127,7 +127,7 @@ function progress(button)
             'status':status
         },
         success:function(data) {
-            alert('fired');
+            alert("hello");
             if(data == 1)
             {
                 location.reload();

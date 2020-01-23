@@ -118,6 +118,7 @@ function progress(button)
     var inward_id = document.getElementById('inward_id').value
     var phase = button.getAttribute('data-phase');
     var status = button.getAttribute('data-status');
+    alert('progress fired with data ' + inward_id);
     $.ajax({
         type:'GET',
         url:'/updateInwardPhase',
@@ -127,7 +128,6 @@ function progress(button)
             'status':status
         },
         success:function(data) {
-            alert('fired');
             if(data == 1)
             {
                 location.reload();

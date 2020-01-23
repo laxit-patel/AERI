@@ -74,7 +74,7 @@
                                 <td>{{ $inward->material_name }}</td>
                                 <td>{{ $inward->test_duration }}</td>
                                 <td>
-                                  <a href="/perform/{{$inward->inward_id}}" class="btn btn-round bg-gradient-green">
+                                  <a href="/perform/{{$inward->test_id}}" class="btn btn-round bg-gradient-green">
                                   Perform
                                   </a>
                                 </td>

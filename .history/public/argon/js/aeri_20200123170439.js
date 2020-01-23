@@ -36,7 +36,7 @@ var phase_one = document.getElementById("phase_one").getAttribute('data-status')
 var phase_two = document.getElementById("phase_two").getAttribute('data-status');
 var phase_three =  document.getElementById("phase_three").getAttribute('data-status');
 var phase_four =  document.getElementById("phase_four").getAttribute('data-status');
-
+alert(phase_one);
 if(phase_one == 0 && phase_two == 0 && phase_three == 0 && phase_four == 0)
 {
     $('#phase_one').append("<i class='fas fa-exclamation-circle text-white'></i>");
@@ -127,7 +127,6 @@ function progress(button)
             'status':status
         },
         success:function(data) {
-            alert('fired');
             if(data == 1)
             {
                 location.reload();

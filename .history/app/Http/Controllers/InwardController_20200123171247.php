@@ -83,9 +83,9 @@ class InwardController extends Controller
         return redirect()->route('inward.index')->withStatus(__('Task Assigned'));
     }
 
-    public function status($inward_id)
+    public function status($inward)
     {
-        $count = Inwards::where('inward_id',$inward_id)->update(
+        $count = Inwards::where('inward_id',$inward)->update(
             array(
                 'inward_status' => 'Tested'
             )

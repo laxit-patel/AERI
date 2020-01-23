@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Lab routes
 	Route::get('/lab', 'LabController@index')->name('lab');
-	Route::get('/perform/{inward_id}', 'LabController@perform')->name('perform');
+	Route::get('/perform/{test_id}', 'LabController@perform')->name('perform');
 
 	//downlaoding test worksheet using routes
 	Route::get('/download',function(){
@@ -55,14 +55,14 @@ Route::group(['middleware' => 'auth'], function () {
 	//ajax routes
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');
 	Route::get('/getTest/{id}', 'TestController@ajax');
-	Route::get('/updateInwardPhase', 'InwardController@phase');
-	//Route::get('/updateTestPhase', 'TestController@phase');
+	Route::get('/updateTestPhase', 'InwardController@phase');
+	Route::get('/updateTestPhase', 'TestController@phase');
 
 	//assign inward to user
 	Route::get('assign/{inward}/to/{user}','InwardController@assign');
 
 	//test completed
-	Route::get('completed/{inward_id}', 'InwardController@status');
+	Route::get('completed/{inward}', 'InwardController@status');
 
 });
 

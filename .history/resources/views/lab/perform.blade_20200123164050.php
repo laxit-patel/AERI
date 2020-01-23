@@ -74,7 +74,7 @@
                                 </div>
                             @endif   
 
-                            <input type="hidden" value="{{ $tests->inward_id}}" id="inward_id">
+                            <input type="hidden" value="{{ $tests->test_id}}" id="test_id">
 
                             <div class="text-center row">
 

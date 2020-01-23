@@ -85,6 +85,8 @@ class InwardController extends Controller
 
     public function status($inward_id)
     {
+        echo $inward_id;
+        die;
         $count = Inwards::where('inward_id',$inward_id)->update(
             array(
                 'inward_status' => 'Tested'
