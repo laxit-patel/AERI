@@ -29648,17 +29648,3 @@ html {
 }
 
 
-/*  Here Starts User Defined Stylesheet*/
-
-.shadow-primary
-{
-    -webkit-box-shadow: 0px 0px 50px 5px rgba(0,0,0,1);
-    -moz-box-shadow: 0px 0px 50px 5px rgba(0,0,0,1);
-    box-shadow: 0px 0px 50px 5px rgba(0,0,0,1);
-}
-
-.progress-card
-{
-    margin:1% 0%;
-
-}

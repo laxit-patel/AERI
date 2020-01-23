@@ -21,7 +21,7 @@
         @stack('css')
 
     </head>
-    <body class=" {{ $class ?? '' }} ">
+    <body class="bg bg-teal {{ $class ?? '' }} ">
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

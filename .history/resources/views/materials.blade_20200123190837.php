@@ -35,13 +35,11 @@
                             <div class=" icon-shape bg-gradient-orange text-white rounded-circle shadow">
                                 <i class="fas fa-atom "></i> 
                                     </div> &nbsp;Materials
-
-                                    
                                 
                             </div>
 
                             <table id="fresh-table" class="table font-weight-bolder bg-darker" >
-                                <thead class="text-white font-weight-900 bg-gradient-orange">
+                                <thead class="text-white bg-gradient-orange">
                                 <th data-field="id">ID</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="iscode" data-sortable="true">Description</th>
@@ -83,8 +81,6 @@
     <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>
 
     <script type="text/javascript">
-
-
     var $table = $('#fresh-table')
     var $alertBtn = $('#alertBtn')
 
@@ -128,14 +124,14 @@
         showRefresh: true,
         showToggle: true,
         showFullscreen: true,
-         
-        
+        showColumns: false,
+        showPaginationSwitch: true,
+        showSelectTitle: true,
         pagination: true,
         striped: true,
         sortable: true,
         pageSize: 8,
         pageList: [8, 10, 25, 50, 100],
-        
 
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
           return ''
@@ -150,11 +146,7 @@
       })
     })
 
-    function router()
-    {
-      window.location.href = "/material/create";
-    }
-
+   
   </script>
 
 @endpush

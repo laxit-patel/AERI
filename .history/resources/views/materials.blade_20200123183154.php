@@ -10,7 +10,7 @@
 @section('content')
     @include('layouts.headers.cards')
     
-    <div class="container-fluid mt--7 ">
+    <div class="container-fluid mt--7">
 
         <div class="row">
         <div class="col-12">
@@ -23,32 +23,28 @@
                             </div>
                         @endif
                     </div>    
-            <div class="col-xl-12 mb-5 mb-xl-0 ">
-            <div class="fresh-table full-color-azure shadow-primary bg-gradient-darker">
+            <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="fresh-table full-color-blue">
                             <!--
                             Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
                             Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
                             -->
-                            <div class="toolbar ">
+                            <div class="toolbar">
                               
                             &nbsp;
                             <div class=" icon-shape bg-gradient-orange text-white rounded-circle shadow">
                                 <i class="fas fa-atom "></i> 
                                     </div> &nbsp;Materials
-
-                                    
                                 
                             </div>
 
-                            <table id="fresh-table" class="table font-weight-bolder bg-darker" >
-                                <thead class="text-white font-weight-900 bg-gradient-orange">
+                            <table id="fresh-table" class="table font-weight-900">
+                                <thead class="text-white bg-gradient-darker">
                                 <th data-field="id">ID</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="iscode" data-sortable="true">Description</th>
                                 <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
-                                
                                 </thead>
-                                
                                 <tbody>
                                 
                                 @foreach ($materials as $material)
@@ -83,8 +79,6 @@
     <script src="{{ asset('argon') }}/vendor/fresh-table/fresh-table.js"></script>
 
     <script type="text/javascript">
-
-
     var $table = $('#fresh-table')
     var $alertBtn = $('#alertBtn')
 
@@ -127,15 +121,12 @@
         search: true,
         showRefresh: true,
         showToggle: true,
-        showFullscreen: true,
-         
-        
+        showColumns: false,
         pagination: true,
         striped: true,
         sortable: true,
         pageSize: 8,
         pageList: [8, 10, 25, 50, 100],
-        
 
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
           return ''
@@ -150,11 +141,7 @@
       })
     })
 
-    function router()
-    {
-      window.location.href = "/material/create";
-    }
-
+   
   </script>
 
 @endpush

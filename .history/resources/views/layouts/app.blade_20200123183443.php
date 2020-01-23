@@ -21,7 +21,7 @@
         @stack('css')
 
     </head>
-    <body class=" {{ $class ?? '' }} ">
+    <body class="{{ $class ?? '' }}">
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -29,7 +29,7 @@
             @include('layouts.navbars.sidebar')
         @endauth
         
-        <div class="main-content ">
+        <div class="main-content bg-red">
             @include('layouts.navbars.navbar')
             @yield('content')
         </div>
