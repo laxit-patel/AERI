@@ -25,6 +25,18 @@ class InwardController extends Controller
         return view('inward', ['inwards' => $inward , 'users' => $users]);
     }
 
+    public function addTest()
+    {
+        $inward = new Inwards;
+        $reference = reference($inward);
+        $key = keyGen($inward);
+        $clients = Clients::all(['client_id','client_name']);
+        $tests = Tests::all(['test_name','test_material','test_id']);
+        $inwards = DB::select("select inward_id, inward_status, inward_client, inward_report_date, client_name from inwards i inner join clients c on i.inward_client = c.client_id  ");
+        //$inwards = Inwards::all(['inward_id','inward_client']);
+        return view('inward.addTest',['inwards' => $inwards ], compact('clients','tests','reference','key'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

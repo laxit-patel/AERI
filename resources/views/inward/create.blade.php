@@ -80,20 +80,13 @@
 
                             <div class="row">
 
-                            <div class=" col-md-6 form-group input-group{{ $errors->has('inward_client') ? ' has-danger' : '' }}">
+                            <div class=" col-md-12 form-group input-group{{ $errors->has('inward_client') ? ' has-danger' : '' }}">
                                     
-                                    <select name="inward_client" id="inward_client" style="border-top-left-radius:10px" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
-                                        
+                                    <select name="inward_client" id="inward_client"  class=" rounded custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
                                         @foreach($clients as $client)
                                         <option class="bg-danger display-4" value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
                                         @endforeach
                                     </select>
-
-                                    <a href="{{ route('client.create') }}" class="input-group-append">
-                                        <span class="input-group-text  bg-orange text-white">
-                                            <i class="fa fa-plus-square"></i>
-                                        </span>
-                                        </a>
 
                                     @if ($errors->has('inward_client'))
                                         <span class="invalid-feedback" role="alert">
@@ -101,10 +94,6 @@
                                         </span>
                                     @endif
                                 </div>
-
-                            <div class="card col-md-6" data-select2-id="7">
-                            
-                            </div>
 
                             </div>
 
@@ -112,31 +101,11 @@
                             <div class="row">
 
                             
-                            <div class=" col-md-6 form-group input-group{{ $errors->has('inward_client') ? ' has-danger' : '' }}">
-                                    
-                                    <select name="inward_client" id="input-material" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
-                                        <option  selected disabled>Select Client</option>
-                                        @foreach($clients as $client)
-                                        <option class="bg-danger display-4" value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <a href="{{ route('client.create') }}" class="input-group-append">
-                                        <span class="input-group-text  bg-orange text-white">
-                                            <i class="fa fa-plus-square"></i>
-                                        </span>
-                                        </a>
-
-                                    @if ($errors->has('inward_client'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('inward_client') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                            
 
                             <div class="col-md-6 form-group input-group{{ $errors->has('inward_test') ? ' has-danger' : '' }}">
                     
-                                <select class="form-control form-control-lg custom-select custom-select-lg font-weight-bold text-white bg-gradient-danger {{ $errors->has('inward_test') ? ' is-invalid' : '' }}" name="inward_test" id="inward_test_datalist">
+                                <select class="inward-test form-control form-control-lg custom-select custom-select-lg font-weight-bold text-white bg-gradient-danger {{ $errors->has('inward_test') ? ' is-invalid' : '' }}" name="inward_test" id="inward_test_datalist">
                                     <option selected disabled>-- Select Test -- </option>
                                 @foreach($tests as $test)
                                         <option class="display-4 bg-danger"  value="{{ $test['test_id'] }}">{{ $test['test_name'] }}</option>

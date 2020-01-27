@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/lab', 'LabController@index')->name('lab');
 	Route::get('/perform/{inward_id}', 'LabController@perform')->name('perform');
 
+	//add test or quotation into inward route
+	Route::get('/inwardAddTest', 'InwardController@addTest');
+
 	//downlaoding test worksheet using routes
 	Route::get('/download',function(){
 		$path = request()->path;
