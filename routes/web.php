@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/getMaterials/{id}', 'MaterialController@ajax');
 	Route::get('/getTest/{id}', 'TestController@ajax');
 	Route::get('/updateInwardPhase', 'InwardController@phase');
+	Route::get('/getTestForInward', 'InwardController@sendTest');
 	//Route::get('/updateTestPhase', 'TestController@phase');
 
 	//assign inward to user
@@ -66,6 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//test completed
 	Route::get('completed/{inward_id}', 'InwardController@status');
+
+	
+
 
 });
 

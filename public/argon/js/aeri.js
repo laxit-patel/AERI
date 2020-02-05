@@ -32,10 +32,22 @@ var progress_bar = 0;
 $('.progress-meter').text(progress_bar + '%');
 $('.submit-test').addClass('disabled');
 
-var phase_one = document.getElementById("phase_one").getAttribute('data-status');
-var phase_two = document.getElementById("phase_two").getAttribute('data-status');
-var phase_three =  document.getElementById("phase_three").getAttribute('data-status');
-var phase_four =  document.getElementById("phase_four").getAttribute('data-status');
+if(typeof document.getElementById("phase_one") !== 'undefined' && document.getElementById("phase_one") !== null) {
+    var phase_one = document.getElementById("phase_one").getAttribute('data-status');
+  }
+  if(typeof document.getElementById("phase_two") !== 'undefined' && document.getElementById("phase_two") !== null) {
+    var phase_two = document.getElementById("phase_two").getAttribute('data-status');
+  }
+  if(typeof document.getElementById("phase_three") !== 'undefined' && document.getElementById("phase_three") !== null) {
+    var phase_three = document.getElementById("phase_three").getAttribute('data-status');
+  }
+  if(typeof document.getElementById("phase_four") !== 'undefined' && document.getElementById("phase_four") !== null) {
+    var phase_four = document.getElementById("phase_four").getAttribute('data-status');
+  }
+
+
+
+
 
 if(phase_one == 0 && phase_two == 0 && phase_three == 0 && phase_four == 0)
 {
@@ -136,3 +148,16 @@ function progress(button)
     });
 }
 
+//logic to load test details in table  on addinwardtest
+
+$('#select_inward_filltable').on('change', function () {
+    var inward = this.value;
+    $.ajax({
+        type:'GET',
+        url:'/getTestForInward/',
+        data:inward,
+        success:function(data) {
+            alert(data);
+        }
+     });
+});

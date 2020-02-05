@@ -115,6 +115,14 @@ class InwardController extends Controller
         return $count;
     }
 
+    public function sendTest(Request $request)
+    {
+        $inward = DB::select('select * from inwards limit 1');
+        $iwnard_id = $inward->inward_id;
+        $iwnard_test = $inward->inward_test;
+        return $inward;
+    }
+
     /**
      * Display the specified resource.
      *

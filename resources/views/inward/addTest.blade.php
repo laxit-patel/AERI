@@ -31,7 +31,7 @@
 
                                 <div class=" col-md-6 form-group input-group{{ $errors->has('inward_client') ? ' has-danger' : '' }}">
 
-                                    <select name="inward_client" id="inward_client"  class=" rounded custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
+                                    <select name="inward_client" id="select_inward_filltable"  class=" rounded custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_client') ? ' is-invalid' : '' }}" required autofocus>
                                        <option selected disabled>Select Inward</option>
                                     @foreach($inwards as $inward)
                                         <option class="bg-danger display-4" value="{{ $inward->inward_id }}">{{ $inward->inward_id }} - {{ $inward->client_name }} </option>
