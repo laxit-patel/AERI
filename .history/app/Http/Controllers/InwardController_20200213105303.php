@@ -140,8 +140,7 @@ class InwardController extends Controller
      */
     public function edit($inward_id)
     {
-        $inward = DB::select("select inward_id, inward_test, test_id, test_name, inward_client,inward_date, inward_report_date, client_id, client_name, client_gstin, client_address, client_email, client_phone from inwards i inner join tests t on i.inward_test = t.test_id inner join clients c on c.client_id = i.inward_client where inward_id = '$inward_id' ");
-        
+        $inward = DB::select("select inward_id, inward_test, test_id, test_name, inward_client, client_id, client_name from inwards i inner join tests t on i.inward_test = t.test_id inner join clients c on c.client_id = i.inward_client where inward_id = '$inward_id' ");
         return view('inward.edit', ['inwards' => $inward]);
     }
 

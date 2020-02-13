@@ -104,27 +104,25 @@
                             @endif   
 
                             <div class="container">
-                            
+                            <h3> Date & Duration </h3>
                             <div class="input-daterange datepicker row align-items-center">
                                 <div class="col">
                                     <div class="form-group ">
-                                        <label>Inward Date</label>
                                         <div class="input-group input-group-alternative ">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input name="inward_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_date }}" type="text" >
+                                            <input name="inward_date" class="form-control form-control-lg text-white bg-gradient-danger" placeholder="Inward Date" type="text" >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label>Report Date</label> 
                                         <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input name="inward_report_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_report_date }}" type="text" >
+                                            <input name="inward_report_date" class="form-control form-control-lg text-white bg-gradient-danger" placeholder="Invard Due Date" type="text" >
                                         </div>
                                     </div>
                                 </div>
@@ -143,8 +141,8 @@
 
 
                                 <div class="btn-group " role="group" style="width:100%">
-                                <a href="/inward" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Update') }}</a>
+                                <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
+                                <a href="#" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
                                 </div>
                                 
                                     

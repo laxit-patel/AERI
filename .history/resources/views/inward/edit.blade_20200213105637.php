@@ -50,40 +50,19 @@
                         <span class="text-white">{{ $inward->client_name }}</span>
                         <div class="bg-transparent float-right text-white collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         
-                                <i class="fas fa-caret-down text-white"></i>            
-                        </div>
+                                <i class="fas fa-caret-down text-white"></i>
+                                
+                    </div>
 
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <table class="table bg-darker text-white rounded">
-                        
-                        <thead>
-                        <tr>
-                            <th colspan=2>
-                            <h3 class="text-center text-white"> Consignee Details</h3>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td> GSTIN </td>
-                            <td> {{ $inward->client_gstin }} </td>
-                        <tr>
-                        <tr>
-                            <td> Mobile </td>
-                            <td> {{ $inward->client_phone }} </td>
-                        <tr>
-                        <tr>
-                            <td> Email </td>
-                            <td> {{ $inward->client_email }} </td>
-                        <tr>
-                        <tr>
-                            <td> Address </td>
-                            <td> {{ $inward->client_address }} </td>
-                        <tr>
-                        </thead>
-                        </table>
-                    </div>
-                    </div>
-                </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+
+  
+
+</div>
 
                         </div>
                     </div>
@@ -103,37 +82,10 @@
                                 </div>
                             @endif   
 
-                            <div class="container">
                             
-                            <div class="input-daterange datepicker row align-items-center">
-                                <div class="col">
-                                    <div class="form-group ">
-                                        <label>Inward Date</label>
-                                        <div class="input-group input-group-alternative ">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input name="inward_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_date }}" type="text" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label>Report Date</label> 
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input name="inward_report_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_report_date }}" type="text" >
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-
-                            </div>
 
                             
-<hr>
+
                                 <span class="mr-2 progress-meter"></span>
                                 <div>
                                 <div class="progress" >
@@ -143,8 +95,8 @@
 
 
                                 <div class="btn-group " role="group" style="width:100%">
-                                <a href="/inward" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Update') }}</a>
+                                <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
+                                <a href="#" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
                                 </div>
                                 
                                     
@@ -156,13 +108,6 @@
                 </div>
             </div>
         </div>
-
-        @push('js')
-    <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-                               
-                                
-    @endpush
         
         @include('layouts.footers.auth')
     </div>
