@@ -146,11 +146,6 @@ class InwardController extends Controller
         return view('inward.edit', ['inwards' => $inward], compact('clients', 'tests'));
     }
 
-    public function addNewTest(Request $request)
-    {
-        dd($request);
-    }
-
     /**
      * Update the specified resource in storage.
      *

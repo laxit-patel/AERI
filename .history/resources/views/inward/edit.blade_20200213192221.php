@@ -36,7 +36,7 @@
                         </div>
                         <hr>
 
-                        <form method="post" action="{{ route('addNewTest') }}" autocomplete="off">
+                        <form method="post" action="{{ route('inward.store') }}" autocomplete="off">
                             @csrf
   
                         <div class="row " id="test-selection">

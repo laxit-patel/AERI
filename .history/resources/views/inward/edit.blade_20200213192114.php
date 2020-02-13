@@ -36,7 +36,7 @@
                         </div>
                         <hr>
 
-                        <form method="post" action="{{ route('addNewTest') }}" autocomplete="off">
+                        <form method="post" action="{{ route('inward.store') }}" autocomplete="off">
                             @csrf
   
                         <div class="row " id="test-selection">
@@ -79,10 +79,8 @@
                         </div>
 
                         <div class="btn btn-success btn-block btn-lg" id="test-selection-trigger">Add New</div>
-                        <button type="submit" class="btn btn-success btn-block text-white btn-lg" id="test-selection-add">Add </button>
+                        <a href="" class="btn btn-success btn-block text-white btn-lg" id="test-selection-add">Add </a>
                         
-                        </form>
-
                     </div>
                 </div>
             </div>

@@ -70,7 +70,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//inward edit
 	Route::get('/edit/{inward_id}', 'InwardController@edit');
-	Route::post('/addNewTest', 'InwardController@addNewTest')->name('addNewTest');
 
 
 });

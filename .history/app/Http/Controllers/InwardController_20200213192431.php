@@ -148,7 +148,7 @@ class InwardController extends Controller
 
     public function addNewTest(Request $request)
     {
-        dd($request);
+        
     }
 
     /**

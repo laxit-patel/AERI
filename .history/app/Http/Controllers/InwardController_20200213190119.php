@@ -143,12 +143,7 @@ class InwardController extends Controller
         $inward = DB::select("select inward_id, inward_test, test_id, test_name, inward_client,inward_date, inward_report_date, client_id, client_name, client_gstin, client_address, client_email, client_phone from inwards i inner join tests t on i.inward_test = t.test_id inner join clients c on c.client_id = i.inward_client where inward_id = '$inward_id' ");
         $clients = Clients::all(['client_id','client_name']);
         $tests = Tests::all(['test_name','test_material','test_id']);
-        return view('inward.edit', ['inwards' => $inward], compact('clients', 'tests'));
-    }
-
-    public function addNewTest(Request $request)
-    {
-        dd($request);
+        return view('inward.edit', ['inwards' => $inward], compact('clients', 'tests','reference','key'));
     }
 
     /**

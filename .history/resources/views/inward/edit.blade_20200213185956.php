@@ -36,12 +36,12 @@
                         </div>
                         <hr>
 
-                        <form method="post" action="{{ route('addNewTest') }}" autocomplete="off">
-                            @csrf
-  
-                        <div class="row " id="test-selection">
+                        <!-- Select Test  -->
 
-                        <div class="col-md-12 form-group input-group{{ $errors->has('inward_test') ? ' has-danger' : '' }}">
+                        
+                        <div class="row">
+
+                        <div class="col-md-6 form-group input-group{{ $errors->has('inward_test') ? ' has-danger' : '' }}">
 
                             <select class="inward-test form-control form-control-lg custom-select custom-select-lg font-weight-bold text-white bg-gradient-danger {{ $errors->has('inward_test') ? ' is-invalid' : '' }}" name="inward_test" id="inward_test_datalist">
                                 <option selected disabled>-- Select Test -- </option>
@@ -51,6 +51,11 @@
                             </select>
 
 
+                                <a href="{{ route('test.create') }}" class="input-group-append">
+                                    <span class="input-group-text  bg-orange text-white">
+                                        <i class="fa fa-plus-square"></i>
+                                    </span>
+                                    </a>
 
                                 @if ($errors->has('inward_test'))
                                     <span class="invalid-feedback" role="alert">
@@ -59,7 +64,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-md-12 form-group input-group {{ $errors->has('inward_material') ? ' has-danger' : '' }}">
+                            <div class="col-md-6 form-group input-group {{ $errors->has('inward_material') ? ' has-danger' : '' }}">
                                 
                                 <select name="inward_material" id="inward_material_dropdown" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_material') ? ' is-invalid' : '' }}" required >
                                     <option selected disabled>No Test Selected</option>
@@ -67,6 +72,11 @@
                                     
                                 </select>
 
+                                <a href="{{ route('material.create') }}" class="input-group-append">
+                                    <span class="input-group-text  bg-orange text-white">
+                                        <i class="fa fa-plus-square"></i>
+                                    </span>
+                                    </a>
 
                                 @if ($errors->has('inward_material'))
                                     <span class="invalid-feedback" role="alert">
@@ -78,12 +88,11 @@
 
                         </div>
 
-                        <div class="btn btn-success btn-block btn-lg" id="test-selection-trigger">Add New</div>
-                        <button type="submit" class="btn btn-success btn-block text-white btn-lg" id="test-selection-add">Add </button>
-                        
-                        </form>
+                        <!-- select Test Ends -->
 
-                    </div>
+                        <div class="btn btn-success btn-block btn-lg">Add New</div>
+                        
+                    </!-->
                 </div>
             </div>
             <div class="col-xl-8 order-xl-1 ">
@@ -205,18 +214,7 @@
         @push('js')
     <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-    <script type="text/javascript">
-    $("#test-selection").hide();
-    $("#test-selection-add").hide();
-        
-    $("#test-selection-trigger").on('click', function () {
-        $(this).hide();
-        $("#test-selection").fadeIn("slow");
-        $("#test-selection-add").fadeIn("slow");
-
-    });
-
-    </script>                              
+                               
                                 
     @endpush
         

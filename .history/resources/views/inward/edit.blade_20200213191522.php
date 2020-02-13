@@ -36,9 +36,7 @@
                         </div>
                         <hr>
 
-                        <form method="post" action="{{ route('addNewTest') }}" autocomplete="off">
-                            @csrf
-  
+                        
                         <div class="row " id="test-selection">
 
                         <div class="col-md-12 form-group input-group{{ $errors->has('inward_test') ? ' has-danger' : '' }}">
@@ -79,10 +77,8 @@
                         </div>
 
                         <div class="btn btn-success btn-block btn-lg" id="test-selection-trigger">Add New</div>
-                        <button type="submit" class="btn btn-success btn-block text-white btn-lg" id="test-selection-add">Add </button>
+                        <div class="btn btn-success btn-block btn-lg" id="test-selection-trigger">Add </div>
                         
-                        </form>
-
                     </div>
                 </div>
             </div>
@@ -207,12 +203,10 @@
 
     <script type="text/javascript">
     $("#test-selection").hide();
-    $("#test-selection-add").hide();
         
     $("#test-selection-trigger").on('click', function () {
-        $(this).hide();
+
         $("#test-selection").fadeIn("slow");
-        $("#test-selection-add").fadeIn("slow");
 
     });
 
