@@ -122,6 +122,9 @@ class TestController extends Controller
 
     public function ajax($id)
     {
+    
+        $test = Tests::all()->where('test_id',$id)->first();
+        $materials = Materials::all()->where('material_id',$test->test_material)->first();
         $data = DB::select("select material_id, material_name, test_id, test_name, test_rate from materials m inner join tests t on m.material_id = t.test_material where test_id =  '" .$id. "' ");
         return $data;
     }

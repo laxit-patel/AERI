@@ -16,8 +16,8 @@ $("#inward_test_datalist").on('change', function () {
             data:val,
             success:function(data) {
                 console.log(data);
-               $("#inward_material_dropdown").html("<option value='"+ data[0].material_id+"'>"+ data[0].material_name +"</option>");
-               $("#test_price").val(data[0].test_rate);
+               $("#inward_material_dropdown").html("<option value='"+ data.material_id+"'>"+ data.material_name +"</option>");
+               $(input[name="test_price"]).val('hi');
             }
          });
     }

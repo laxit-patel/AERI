@@ -19,6 +19,7 @@ class CreateInvwardsTable extends Migration
             $table->string('inward_client');
             $table->foreign("inward_client")->references('client_id')->on('clients');
             $table->string("inward_test");
+            $table->foreign("inward_test");
             $table->string('inward_assign_to')->default(NULL)->nullable();
             $table->foreign('inward_assign_to')->references('id')->on('users');
             $table->boolean("inward_phase_one")->default(0);

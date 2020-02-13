@@ -148,24 +148,24 @@
                                    
                                 </div> 
 
-                                <div class=" col-md-2 form-group{{ $errors->has('inward_reference') ? ' has-danger' : '' }}">
+                                <div class=" col-md-2 form-group {{ $errors->has('test_price') ? ' has-danger' : '' }}">
                                     
-                                    <input type="text" name="test_price" id="test_price" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Price" value="{{ old('inward_reference') }}" required autofocus>
+                                    <input type="text" name="test_price" id="test_price" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('test_price') ? ' is-invalid' : '' }}" placeholder="{{ Price }}" value="{{ old('test_price') }}" required autofocus>
 
-                                    @if ($errors->has('inward_reference'))
+                                    @if ($errors->has('test_price'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('inward_reference') }}</strong>
+                                            <strong>{{ $errors->first('test_price') }}</strong>
                                         </span>
                                     @endif
                                 </div>
 
-                                <div class=" col-md-2 form-group{{ $errors->has('inward_reference') ? ' has-danger' : '' }}">
+                                <div class=" col-md-2 form-group{{ $errors->has('test_qty') ? ' has-danger' : '' }}">
                                     
-                                    <input type="text" name="test_qty" id="test_qty" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Quantity" value="{{ old('inward_reference') }}" required autofocus>
+                                    <input type="text" name="test_qty" id="test_qty" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('test_qty') ? ' is-invalid' : '' }}" placeholder="{{ Quantity }}" value="{{ old('test_qty') }}" required autofocus>
 
-                                    @if ($errors->has('inward_reference'))
+                                    @if ($errors->has('test_qty'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('inward_reference') }}</strong>
+                                            <strong>{{ $errors->first('test_qty') }}</strong>
                                         </span>
                                     @endif
                                 </div>

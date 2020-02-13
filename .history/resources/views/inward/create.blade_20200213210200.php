@@ -150,7 +150,7 @@
 
                                 <div class=" col-md-2 form-group{{ $errors->has('inward_reference') ? ' has-danger' : '' }}">
                                     
-                                    <input type="text" name="test_price" id="test_price" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Price" value="{{ old('inward_reference') }}" required autofocus>
+                                    <input type="text" name="test_price" id="inward_price" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Price" value="{{ old('inward_reference') }}" required autofocus>
 
                                     @if ($errors->has('inward_reference'))
                                         <span class="invalid-feedback" role="alert">

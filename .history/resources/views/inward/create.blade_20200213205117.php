@@ -150,18 +150,7 @@
 
                                 <div class=" col-md-2 form-group{{ $errors->has('inward_reference') ? ' has-danger' : '' }}">
                                     
-                                    <input type="text" name="test_price" id="test_price" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Price" value="{{ old('inward_reference') }}" required autofocus>
-
-                                    @if ($errors->has('inward_reference'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('inward_reference') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <div class=" col-md-2 form-group{{ $errors->has('inward_reference') ? ' has-danger' : '' }}">
-                                    
-                                    <input type="text" name="test_qty" id="test_qty" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Quantity" value="{{ old('inward_reference') }}" required autofocus>
+                                    <input type="text" name="inward_reference" id="inward_reference_focus" class="form-control form-control-lg font-weight-bold text-white bg-gradient-danger form-control-alternative{{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="{{ $reference }}" value="{{ old('inward_reference') }}" required autofocus>
 
                                     @if ($errors->has('inward_reference'))
                                         <span class="invalid-feedback" role="alert">
