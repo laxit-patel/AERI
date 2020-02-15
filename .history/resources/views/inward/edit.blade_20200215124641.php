@@ -19,34 +19,21 @@
                     </div>
 
                     <div class="card-body ">
-                    
+                        <div class="row">
+                            <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center md-5">
-                                
-                                   <table class="table">
-                                   <tr>
 
-                                    <th> Name</th>
-                                    <th> Quantity </th>
-
-                                   </tr>
+                                   
                                 @foreach ($records as $record => $test)
-
-                                <tr >
-                                <td>
+                                <div class="container bg-gradient-red rounded text-white">
                                 {{ $test->test_name }}
-                                </td>
-                                <td>
-                                {{ $test->record_qty }}
-                                </td>
-                                <tr>
-
-                                
+                                </div>
                                 @endforeach
-                                </table>
                                 
 
                                 </div>
-
+                            </div>
+                        </div>
                         <hr>
 
                         <form method="post" action="{{ route('addNewRecord') }}" autocomplete="off">

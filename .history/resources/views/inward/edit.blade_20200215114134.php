@@ -19,40 +19,27 @@
                     </div>
 
                     <div class="card-body ">
-                    
+                        <div class="row">
+                            <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center md-5">
-                                
-                                   <table class="table">
-                                   <tr>
 
-                                    <th> Name</th>
-                                    <th> Quantity </th>
-
-                                   </tr>
-                                @foreach ($records as $record => $test)
-
-                                <tr >
-                                <td>
-                                {{ $test->test_name }}
-                                </td>
-                                <td>
-                                {{ $test->record_qty }}
-                                </td>
-                                <tr>
-
-                                
+                                   
+                                @foreach ($records as $record)
+                                <div class="container bg-gradient-red rounded text-white">
+                                {{ $record->test_name }}
+                                </div>
                                 @endforeach
-                                </table>
                                 
 
                                 </div>
-
+                            </div>
+                        </div>
                         <hr>
 
                         <form method="post" action="{{ route('addNewRecord') }}" autocomplete="off">
                             @csrf
 
-                            <input type="hidden" value={{ $inwards[0]->inward_id }} name="inward_id">
+                            <input type="hidden" value={{ $inward->inward_id }} name="inward_id">
   
                         <div class="row " id="test-selection">
 
@@ -129,7 +116,7 @@
                         <div class="row align-items-center">
 
                         <div class="accordion container-fluid" id="accordionExample">
-                        <span class="text-white">{{ $inwards[0]->client_name }}</span>
+                        <span class="text-white">{{ $inward->client_name }}</span>
                         <div class="bg-transparent float-right text-white collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         
                                 <i class="fas fa-caret-down text-white"></i>            
@@ -147,19 +134,19 @@
                         </tr>
                         <tr>
                             <td> GSTIN </td>
-                            <td> {{ $inwards[0]->client_gstin }} </td>
+                            <td> {{ $inward->client_gstin }} </td>
                         <tr>
                         <tr>
                             <td> Mobile </td>
-                            <td> {{ $inwards[0]->client_phone }} </td>
+                            <td> {{ $inward->client_phone }} </td>
                         <tr>
                         <tr>
                             <td> Email </td>
-                            <td> {{ $inwards[0]->client_email }} </td>
+                            <td> {{ $inward->client_email }} </td>
                         <tr>
                         <tr>
                             <td> Address </td>
-                            <td> {{ $inwards[0]->client_address }} </td>
+                            <td> {{ $inward->client_address }} </td>
                         <tr>
                         </thead>
                         </table>
@@ -195,7 +182,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input name="inward_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inwards[0]->inward_date }}" type="text" >
+                                            <input name="inward_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_date }}" type="text" >
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +193,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-danger text-white"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input name="inward_report_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inwards[0]->inward_report_date }}" type="text" >
+                                            <input name="inward_report_date" class="form-control form-control-lg text-white bg-gradient-danger" value="{{ $inward->inward_report_date }}" type="text" >
                                         </div>
                                     </div>
                                 </div>

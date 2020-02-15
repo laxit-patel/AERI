@@ -19,34 +19,44 @@
                     </div>
 
                     <div class="card-body ">
-                    
+                        <div class="row">
+                            <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center md-5">
-                                
-                                   <table class="table">
-                                   <tr>
 
-                                    <th> Name</th>
-                                    <th> Quantity </th>
-
-                                   </tr>
+                                   
                                 @foreach ($records as $record => $test)
 
-                                <tr >
-                                <td>
-                                {{ $test->test_name }}
-                                </td>
-                                <td>
-                                {{ $test->record_qty }}
-                                </td>
-                                <tr>
+                                <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                    <!-- Avatar -->
+                                    <a href="#" class="avatar avatar-xl rounded-circle">
+                                        <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                                    </a>
+                                    </div>
+                                    <div class="col ml--2">
+                                    <h4 class="mb-0">
+                                        <a href="#!">John Snow</a>
+                                    </h4>
+                                    <p class="text-sm text-muted mb-0">Working remoteley</p>
+                                    <span class="text-success">●</span>
+                                    <small>Active</small>
+                                    </div>
+                                    <div class="col-auto">
+                                    <button type="button" class="btn btn-sm btn-primary">Add</button>
+                                    </div>
+                                </div>
+                                </div>
 
-                                
+                                <div class="bg-gradient-red rounded text-white">
+                                {{ $test->test_name }}
+                                </div>
                                 @endforeach
-                                </table>
                                 
 
                                 </div>
-
+                            </div>
+                        </div>
                         <hr>
 
                         <form method="post" action="{{ route('addNewRecord') }}" autocomplete="off">

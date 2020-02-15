@@ -22,27 +22,15 @@
                     
                                 <div class="card-profile-stats d-flex justify-content-center md-5">
                                 
-                                   <table class="table">
-                                   <tr>
-
-                                    <th> Name</th>
-                                    <th> Quantity </th>
-
-                                   </tr>
+                                   
                                 @foreach ($records as $record => $test)
 
-                                <tr >
-                                <td>
+                                <tr>
                                 {{ $test->test_name }}
-                                </td>
-                                <td>
-                                {{ $test->record_qty }}
-                                </td>
                                 <tr>
 
                                 
                                 @endforeach
-                                </table>
                                 
 
                                 </div>

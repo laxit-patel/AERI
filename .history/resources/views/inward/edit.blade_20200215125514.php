@@ -31,13 +31,10 @@
                                    </tr>
                                 @foreach ($records as $record => $test)
 
-                                <tr >
-                                <td>
+                                <tr class="text-center">
+                                <th>
                                 {{ $test->test_name }}
-                                </td>
-                                <td>
-                                {{ $test->record_qty }}
-                                </td>
+                                </th>
                                 <tr>
 
                                 

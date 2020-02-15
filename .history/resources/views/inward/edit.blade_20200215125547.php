@@ -36,7 +36,6 @@
                                 {{ $test->test_name }}
                                 </td>
                                 <td>
-                                {{ $test->record_qty }}
                                 </td>
                                 <tr>
 
