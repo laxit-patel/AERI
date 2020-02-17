@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-3 form-group{{ $errors->has('test_name') ? ' has-danger' : '' }}">
+                                <div class="col-md-4 form-group{{ $errors->has('test_name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Test Name') }}</label>
                                     <input type="text" name="test_name" id="input-name" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('test_name') }}" required >
 
@@ -73,20 +73,35 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-3 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-material">{{ __('Test Duration (in Days) ') }}</label>
-                                        
-                                            <input type="number" max="365" name="test_duration" id="input-material" class=" form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
+                                <div class="col-md-5 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-material">{{ __('Test Duration ') }}</label>
+                                        <div class="row">
+                                            <input type="number" max="365" name="test_days" id="input-material" class="col-md-6 form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
                                             
-                                        
+                                        </div>
                                     @if ($errors->has('test_duration'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_duration ()') }}</strong>
+                                            <strong>{{ $errors->first('test_duration') }}</strong>
                                         </span>
                                     @endif
                                 </div>
+                                
+                                <div class="col-md-3 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-worksheet">{{ __('Format') }}</label>
+                                    <input type="file" name="test_worksheet" id="input-worksheet" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_worksheet') ? ' is-invalid' : '' }}" placeholder="{{ __('Worksheet Format') }}" value="{{ old('test_worksheet') }}" required >
 
-                                <div class="col-md-3 form-group{{ $errors->has('test_rate') ? ' has-danger' : '' }}">
+                                    @if ($errors->has('test_worksheet'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('test_worksheet') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                
+
+                            </div>
+
+                            <div class="row">
+                            <div class="col-md-3 form-group{{ $errors->has('test_rate') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-rate">{{ __('Test Rate') }}</label>
                                     <input type="text" name="test_rate" id="input-rate" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_rate') ? ' is-invalid' : '' }}" placeholder="{{ __('Rates') }}" value="{{ old('test_parameter') }}" required >
 
@@ -103,37 +118,6 @@
                                     @if ($errors->has('test_rate_mes'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('test_rate_mes') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                
-                                
-                                
-
-                            </div>
-
-                            <div class="row">
-
-                            
-                                <div class="col-md-6 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-worksheet">{{ __('Worksheet Format') }}</label>
-                                    <input type="file" name="test_worksheet" id="input-worksheet" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_worksheet') ? ' is-invalid' : '' }}" placeholder="{{ __('Worksheet Format') }}" value="{{ old('test_worksheet') }}" required >
-
-                                    @if ($errors->has('test_worksheet'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_worksheet') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <div class="col-md-6 form-group{{ $errors->has('test_report') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-report">{{ __('Report Format') }}</label>
-                                    <input type="file" name="test_report" id="input-report" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_report') ? ' is-invalid' : '' }}" placeholder="{{ __('Report Format') }}" value="{{ old('test_report') }}" required >
-
-                                    @if ($errors->has('test_report'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_report') }}</strong>
                                         </span>
                                     @endif
                                 </div>

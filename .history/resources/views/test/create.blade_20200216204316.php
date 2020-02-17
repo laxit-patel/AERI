@@ -74,14 +74,14 @@
                                 </div>
 
                                 <div class="col-md-3 form-group{{ $errors->has('test_duration') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-material">{{ __('Test Duration (in Days) ') }}</label>
+                                    <label class="form-control-label" for="input-material">{{ __('Test Duration ') }}</label>
                                         
-                                            <input type="number" max="365" name="test_duration" id="input-material" class=" form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
+                                            <input type="number" max="365" name="test_days" id="input-material" class=" form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_duration') ? ' is-invalid' : '' }}" placeholder="{{ __('Duration') }}" value="{{ old('test_duration') }}" required >
                                             
                                         
                                     @if ($errors->has('test_duration'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_duration ()') }}</strong>
+                                            <strong>{{ $errors->first('test_duration') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -117,7 +117,7 @@
 
                             
                                 <div class="col-md-6 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-worksheet">{{ __('Worksheet Format') }}</label>
+                                    <label class="form-control-label" for="input-worksheet">{{ __('Format') }}</label>
                                     <input type="file" name="test_worksheet" id="input-worksheet" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_worksheet') ? ' is-invalid' : '' }}" placeholder="{{ __('Worksheet Format') }}" value="{{ old('test_worksheet') }}" required >
 
                                     @if ($errors->has('test_worksheet'))
@@ -127,13 +127,13 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-6 form-group{{ $errors->has('test_report') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-report">{{ __('Report Format') }}</label>
-                                    <input type="file" name="test_report" id="input-report" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_report') ? ' is-invalid' : '' }}" placeholder="{{ __('Report Format') }}" value="{{ old('test_report') }}" required >
+                                <div class="col-md-6 form-group{{ $errors->has('test_worksheet') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-worksheet">{{ __('Format') }}</label>
+                                    <input type="file" name="test_worksheet" id="input-worksheet" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_worksheet') ? ' is-invalid' : '' }}" placeholder="{{ __('Worksheet Format') }}" value="{{ old('test_worksheet') }}" required >
 
-                                    @if ($errors->has('test_report'))
+                                    @if ($errors->has('test_worksheet'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('test_report') }}</strong>
+                                            <strong>{{ $errors->first('test_worksheet') }}</strong>
                                         </span>
                                     @endif
                                 </div>

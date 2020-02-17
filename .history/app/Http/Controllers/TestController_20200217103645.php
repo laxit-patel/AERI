@@ -48,15 +48,15 @@ class TestController extends Controller
             //'test_report' => 'required | file | mimes:xls,xlsx,docx,xltx,pdf',
         ]);
         
-        //$worksheet_filename = "worksheet_".$key.".".$request->file("test_worksheet")->getClientOriginalExtension();
-        //$worksheet_directory = 'test_worksheets';
-        //$worksheet_file = $request->file('test_worksheet')->storeAs($worksheet_directory, $worksheet_filename );
-        //$worksheet_path = storage_path("app\\".$worksheet_directory."\\".$worksheet_filename);
+        $worksheet_filename = "worksheet_".$key.".".$request->file("test_worksheet")->getClientOriginalExtension();
+        $worksheet_directory = 'test_worksheets';
+        $worksheet_file = $request->file('test_worksheet')->storeAs($worksheet_directory, $worksheet_filename );
+        $worksheet_path = storage_path("app\\".$worksheet_directory."\\".$worksheet_filename);
 
-        //$report_filename = "report_".$key.".".$request->file("test_report")->getClientOriginalExtension();
-        //$report_directory = 'test_reports';
-        //$report_file = $request->file('test_report')->storeAs($report_directory, $report_filename );
-        //$report_path = storage_path("app\\".$report_directory."\\".$report_filename);
+        $report_filename = "report_".$key.".".$request->file("test_report")->getClientOriginalExtension();
+        $report_directory = 'test_reports';
+        $report_file = $request->file('test_report')->storeAs($report_directory, $report_filename );
+        $report_path = storage_path("app\\".$report_directory."\\".$report_filename);
 
         $test->test_id = $key;
         $test->test_iscode = $request->test_iscode;
@@ -64,8 +64,8 @@ class TestController extends Controller
         $test->test_material = $request->test_material;
         $test_duration = $request->test_duration;
         $test->test_duration = $test_duration;
-        //$test->test_worksheet = $worksheet_path;
-        //$test->test_report = $report_path;
+        $test->test_worksheet = $worksheet_path;
+        $test->test_report = $report_path;
         $test->test_rate = $request->test_rate;
         $test->test_rate_mes = $request->test_rate_mes;
         
