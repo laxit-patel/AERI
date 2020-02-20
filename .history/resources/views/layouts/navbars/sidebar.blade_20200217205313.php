@@ -52,12 +52,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="#navbar-accounts" data-toggle="collapse-account" role="button" aria-expanded="false" aria-controls="navbar-accounts">
+                    <a class="nav-link " href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-accounts">
                         <i class="fa fa-file-invoice text-purple" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" >{{ __('Accounts') }}</span>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Accounts') }}</span>
                     </a>
 
-                    <div class="collapse" id="navbar-accounts">
+                    <div class="collapse " id="navbar-accounts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">

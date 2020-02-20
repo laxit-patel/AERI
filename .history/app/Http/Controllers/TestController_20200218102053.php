@@ -68,6 +68,7 @@ class TestController extends Controller
         $test->test_report = $report_path;
         $test->test_rate = $request->test_rate;
         $test->test_rate_mes = $request->test_rate_mes;
+        dd($test);
         $test->save();
 
         return redirect()->route('test.index')->withStatus(__('Test Added successfully.'));

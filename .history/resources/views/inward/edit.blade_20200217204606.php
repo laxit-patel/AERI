@@ -251,7 +251,7 @@
 
                                 <div class="btn-group " role="group" style="width:100%">
                                 <a href="/inward" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Invoice') }}</a>
+                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Update') }}</a>
                                 </div>
                                 
                                     

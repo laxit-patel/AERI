@@ -22,8 +22,8 @@
                     
                                 <div class="card-profile-stats d-flex justify-content-center md-5">
                                 
-                                   <table class="table ">
-                                   <tr class="  bg-darker text-white">
+                                   <table class="table">
+                                   <tr>
 
                                     <th class="text-left"> Name</th>
                                     <th class="text-right"> Assigned To </th>
@@ -32,13 +32,7 @@
                                    </tr>
                                 @foreach ($records as $record)
 
-                                <tr 
-                                @if( $record->record_status == 'Enlisted')
-                                 class="bg-danger text-white" 
-                                 @elseif( $record->record_status == 'Tested' )
-                                 class="bg-success text-white" 
-                                 @endif
-                                 >
+                                <tr class="bg-danger">
                                 <td class="text-left">
                                 {{ $record->test_name }}
                                 </td>
@@ -251,7 +245,7 @@
 
                                 <div class="btn-group " role="group" style="width:100%">
                                 <a href="/inward" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Invoice') }}</a>
+                                <a href="/inward" class="btn btn-block btn-success float-right mt-4 ">{{ __('Update') }}</a>
                                 </div>
                                 
                                     
