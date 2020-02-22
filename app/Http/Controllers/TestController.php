@@ -52,12 +52,12 @@ class TestController extends Controller
         $worksheet_directory = 'test_worksheets';
         $worksheet_file = $request->file('test_worksheet')->storeAs($worksheet_directory, $worksheet_filename );
         $worksheet_path = storage_path("app/".$worksheet_directory."/".$worksheet_filename);
-
+            
         $report_filename = "report_".$key.".".$request->file("test_report")->getClientOriginalExtension();
         $report_directory = 'test_reports';
         $report_file = $request->file('test_report')->storeAs($report_directory, $report_filename );
         $report_path = storage_path("app/".$report_directory."/".$report_filename);
-
+        
         $test->test_id = $key;
         $test->test_iscode = $request->test_iscode;
         $test->test_name = $request->test_name;
