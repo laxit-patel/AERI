@@ -21,9 +21,7 @@ class CreateTest extends Migration
             $table->foreign("test_material")
             ->references('material_id')->on('materials');
             $table->string("test_rate");
-            $table->string("test_rate_mes");
-            $table->string("test_rate_cpwd");
-            $table->string("test_rate_isro");
+            $table->string("test_rate_mes");;
             $table->string("test_worksheet");
             $table->string("test_report");
             $table->string("test_duration");

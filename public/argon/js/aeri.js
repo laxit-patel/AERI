@@ -165,3 +165,24 @@ $('#select_inward_filltable').on('change', function () {
         }
      });
 });
+
+//invoice select inward based on client selection logic
+
+$('#invoice_client').on('change', function(){
+    var client = this.value;
+    $.ajax({
+        type:'GET',
+        url:'/getInwardsForClient',
+        data:client,
+        success:function (data) {
+            var i=0;
+            $('#invoice_inward').empty();
+            for(i=0; i<data.length;i++) {
+
+                $("#invoice_inward").append("<option value='" + data[i].inward_id + "'>" + data[i].inward_id + "</option>");
+            }
+            console.log(data.length);
+
+        }
+    });
+});

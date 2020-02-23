@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('material', 'MaterialController', ['except' => ['show']]);
 	Route::resource('test', 'TestController', ['except' => ['show']]);
 	Route::resource('inward', 'InwardController', ['except' => ['show']]);
+    Route::resource('invoice', 'InvoiceController', ['except' => ['show']]);
 
 	//dynamic routes
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -63,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/updateRecordPhase', 'InwardController@phase');
 	Route::get('/getTestForInward/{id}', 'InwardController@sendTest');
 	//Route::get('/updateTestPhase', 'TestController@phase');
+    Route::get('/getInwardsForClient','invoicecontroller@getInwardsForClient');
 
 	//assign inward to user
 	//Route::get('assignInward/{inward}/to/{user}','InwardController@assignInward');

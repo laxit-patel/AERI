@@ -6,6 +6,7 @@ use App\Tests;
 use App\Materials;
 use Illuminate\Http\Request;
 use DB;
+use Storage;
 
 class TestController extends Controller
 {
@@ -49,14 +50,28 @@ class TestController extends Controller
         ]);
         
         $worksheet_filename = "worksheet_".$key.".".$request->file("test_worksheet")->getClientOriginalExtension();
-        $worksheet_directory = 'test_worksheets';
+
+        $worksheet_directory = 'worksheet_format/' . $worksheet_filename;
         $worksheet_file = $request->file('test_worksheet')->storeAs($worksheet_directory, $worksheet_filename );
         $worksheet_path = storage_path("app/".$worksheet_directory."/".$worksheet_filename);
-            
+
+
+		//Storage::disk('s3')->makeDirectory('worksheet_format');
+		//$worksheet_file = Storage::disk('s3')->put($worksheet_filename, file_get_contents($request->file('test_worksheet')), 'worksheet_format');
+        //$worksheet_path = Storage::disk('s3')->url($worksheet_filename);
+		
+		
         $report_filename = "report_".$key.".".$request->file("test_report")->getClientOriginalExtension();
-        $report_directory = 'test_reports';
+
+        $report_directory = 'report_format/' . $report_filename;
         $report_file = $request->file('test_report')->storeAs($report_directory, $report_filename );
         $report_path = storage_path("app/".$report_directory."/".$report_filename);
+
+        //Storage::disk('s3')->makeDirectory('report_format');
+		//$report_file = Storage::disk('s3')->put($report_filename, file_get_contents($request->file('test_report')), 'report_format');
+		//$report_path = Storage::disk('s3')->url($report_filename);
+
+
         
         $test->test_id = $key;
         $test->test_iscode = $request->test_iscode;
