@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('/updateInwardPhase', 'InwardController@phase');
 	Route::get('/updateRecordPhase', 'InwardController@phase');
 	Route::get('/getTestForInward/{id}', 'InwardController@sendTest');
+    Route::get('/getRecordsForInward/{inward}', 'RecordsController@sendRecordsForInvoice');
 	//Route::get('/updateTestPhase', 'TestController@phase');
     Route::get('/getInwardsForClient','invoicecontroller@getInwardsForClient');
 

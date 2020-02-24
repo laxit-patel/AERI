@@ -160,8 +160,6 @@ $('#select_inward_filltable').on('change', function () {
             $("#test_table_body").empty();
             data.forEach(element => $("#test_table_body").append("<tr><td colspan=5>" + element.test_name + "</td></tr>"));
 
-           
-
         }
      });
 });
@@ -176,7 +174,8 @@ $('#invoice_client').on('change', function(){
         data:client,
         success:function (data) {
             var i=0;
-            $('#invoice_inward').empty();
+            $("#invoice_inward").empty();
+            $("#invoice_inward").append("<option disabled selected> Select Inward </option>");
             for(i=0; i<data.length;i++) {
 
                 $("#invoice_inward").append("<option value='" + data[i].inward_id + "'>" + data[i].inward_id + "</option>");
@@ -185,4 +184,22 @@ $('#invoice_client').on('change', function(){
 
         }
     });
+});
+
+$('#invoice_inward').on('change',function () {
+
+    var inward = this.value;
+
+    $.ajax({
+        type:'GET',
+        url:'/getRecordsForInward/'+inward,
+        data:inward,
+        success:function(data) {
+            console.log(data);
+            //$("#test_table_body").empty();
+            //data.forEach(element => $("#test_table_body").append("<tr><td colspan=5>" + element.test_name + "</td></tr>"));
+
+        }
+    });
+
 });

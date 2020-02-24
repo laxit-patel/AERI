@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Records;
+use DB;
 use Illuminate\Http\Request;
 
 class RecordsController extends Controller
@@ -26,7 +27,17 @@ class RecordsController extends Controller
     {
         //
     }
+    public function sendRecordsForInvoice($inward)
+    {
 
+        $records = DB::table('records')
+            ->leftJoin('inwards','record_inward','=','inwards.inward_id')
+            ->join('tests','record_test','=','tests.test_id')
+            ->where('record_inward',$inward)->get();
+        dd($records);
+        //$records = DB::table('records')->leftJoin('inwards','record_inward','=','inwards.inward_id')->where('record_inward','=',$inward->inward);
+        return response()->json($records);
+    }
     /**
      * Store a newly created resource in storage.
      *
