@@ -29,12 +29,13 @@ class RecordsController extends Controller
     }
     public function sendRecordsForInvoice($inward)
     {
-
         $records = DB::table('records')
             ->leftJoin('inwards','record_inward','=','inwards.inward_id')
             ->join('tests','record_test','=','tests.test_id')
+            ->join('materials','test_material','=','materials.material_id')
             ->where('record_inward',$inward)->get();
-        dd($records);
+
+
         //$records = DB::table('records')->leftJoin('inwards','record_inward','=','inwards.inward_id')->where('record_inward','=',$inward->inward);
         return response()->json($records);
     }

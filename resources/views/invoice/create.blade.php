@@ -68,24 +68,71 @@
 
 
 
-                            <table class="table ">
+                            <table class="table " id="items_table">
                                 <thead class="bg-darker text-white   ">
                                 <tr>
                                     <th scope="col">Test</th>
                                     <th scope="col">Material</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
                                 </tr>
                                 </thead>
-                                <tbody id="test_table_body">
+                                <tbody id="items_table_body">
                                 <tr>
                                     <th colspan="5" class="text-center">No <span class="btn btn-sm bg-red text-white">Inward</span> Selected</th>
 
                                 </tr>
+                                </tbody>
+                                <tbody id="items_table_total">
+                                <tr class="bg-darker text-white">
+                                    <th colspan="3" class="text-right"></th>
+                                    <th >
+                                        <input type="text" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_qty" disabled>
+                                    </th>
+                                    <th >
+                                        <input type="text" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_amount" disabled>
+                                    </th>
+                                </tr>
 
+                                <tr class="bg-darker text-white" id="items_table_tax">
+
+                                    <th  class="text-center">
+                                        <select name="invoice_gst" id="invoice_gst" class=" form-control   text-darker  form-control-sm  {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" required autofocus>
+                                            <option selected disabled>-- Select GST --</option>
+                                            <option value="3"> 3% ( CGST(1.5%) + SGST(1.5%) )</option>
+                                            <option value="5"> 5% ( CGST(2.5%) + SGST(2.5%) )</option>
+                                            <option value="12"> 12% ( CGST(6%) + SGST(6%) )</option>
+                                            <option value="18"> 18% ( CGST(9%) + SGST(9%) )</option>
+                                            <option value="28"> 28% ( CGST(14%) + SGST(14%) )</option>
+
+                                        </select>
+                                    </th>
+
+                                    <th   class="text-center">
+                                        <select name="invoice_inward" id="invoice_inward" class=" form-control form-control-sm text-darker  font-weight-bold  form-control-alternative {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" required autofocus>
+                                            <option selected disabled>-- Select IGST --</option>
+                                            <option  disabled>-- Coming soon --</option>
+
+                                        </select>
+                                    </th>
+
+                                    <th >
+                                        <input type="text" name="invoice_tax" id="invoice_tax" class="form-control form-control-sm font-weight-bold  text-darker form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Tax" value="{{ old('inward_reference') }}" required disabled>
+                                    </th>
+                                    <th >
+                                        <input type="text" name="invoice_roundoff" id="invoice_roundoff" class="form-control form-control-sm font-weight-bold text-darker  form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Round Off" value="{{ old('inward_reference') }}" required  disabled>
+                                    </th>
+                                    <th >
+                                        <input type="text" name="invoice_total" id="invoice_total" class="form-control form-control-sm font-weight-bold text-darker form-control-alternative {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Total" value="{{ old('inward_reference') }}" required disabled>
+                                    </th>
+
+                                </tr>
 
                                 </tbody>
+
+
+
                             </table>
 
 
@@ -106,4 +153,12 @@
 
         @include('layouts.footers.auth')
     </div>
+
+
+    @push('js')
+
+
+
+    @endpush
+
 @endsection

@@ -54,7 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 		$path = request()->path;
         $chunks = explode("\\",$path);
         $filename = end($chunks);
-		return Response::download($path,$filename);
+        $realpath = realpath($path);
+		return Response::download($realpath,$filename);
 	});
 
 	//ajax routes

@@ -1,5 +1,10 @@
 console.log("custom aeri.js initiated");
 
+$("#items_table_tax").hide();
+$("#items_table_total_qty").hide();
+$("#items_table_total_amount").hide();
+
+
 //logic for custom ajax select menu for inward test
 $("#inward_test_datalist").on('change', function () {
     var val = this.value;
@@ -180,7 +185,7 @@ $('#invoice_client').on('change', function(){
 
                 $("#invoice_inward").append("<option value='" + data[i].inward_id + "'>" + data[i].inward_id + "</option>");
             }
-            console.log(data.length);
+
 
         }
     });
@@ -195,11 +200,46 @@ $('#invoice_inward').on('change',function () {
         url:'/getRecordsForInward/'+inward,
         data:inward,
         success:function(data) {
-            console.log(data);
-            //$("#test_table_body").empty();
-            //data.forEach(element => $("#test_table_body").append("<tr><td colspan=5>" + element.test_name + "</td></tr>"));
+            let grand_total = 0
+            let total_qty = 0;
+            let total_amount = 0;
+            $("#items_table_body").empty();
+            data.forEach(element => {
+
+                $("#items_table_body").append("<tr class='bg-dark text-white '>" +
+                    "<td >" + element.test_name + "</td>" +
+                    "<td >" + element.material_name + "</td>" +
+                    "<td >" + element.record_price + "</td>" +
+                    "<td >" + element.record_qty + "</td>" +
+                    "<td > <span class=\"btn btn-sm bg-white text-dark\">" + (element.record_price * element.record_qty) + "</span></td>" +
+                    "</tr>" )
+
+                grand_total = grand_total + (element.record_price * element.record_qty);
+                total_qty = +total_qty + +element.record_qty;
+                total_amount = +total_amount + +element.record_price;
+                $("#items_table_total_amount").val(grand_total).fadeIn("slow");
+                $("#items_table_total_qty").val(total_qty).fadeIn("slow");
+                $("#items_table_tax").fadeIn("slow");
+
+
+                }
+            );
 
         }
     });
 
 });
+
+$("#invoice_gst").on('change',function () {
+    var tax_rate = this.value;
+    var price = $("#items_table_total_amount").val();
+    var raw_tax =  price / 100 * tax_rate;
+    tax = Math.trunc(raw_tax);
+    rounded = Number((raw_tax-tax).toFixed(2));
+    var total = +tax + +price;
+
+    $("#invoice_tax").val(tax);
+    $("#invoice_roundoff").val(rounded);
+    $("#invoice_total").val(total);
+ 
+})
