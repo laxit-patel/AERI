@@ -13,7 +13,8 @@ class Inwards extends Model
 
     public function clients()
     {
-        return $this->belongsTo('App\Clients');
+        //return $this->belongsTo('App\Clients');
+        return $this->belongsTo('App\Clients', 'clients_id', 'inward_clients');
     }
 
     public function users()

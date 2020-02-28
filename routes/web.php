@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/edit/{inward_id}', 'InwardController@edit');
 	Route::post('/addNewRecord', 'InwardController@addNewRecord')->name('addNewRecord');
 
+	//accounting Routes
+    Route::get('/ledger', 'LedgerController@index')->name('ledger');
 
 });
 

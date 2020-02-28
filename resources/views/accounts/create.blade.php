@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('test.store') }}" autocomplete="off" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('invoice.store') }}"  id="invoice_form">
                             @csrf
 
                             <div class="row">
@@ -88,17 +88,17 @@
                                 <tr class="bg-darker text-white">
                                     <th colspan="3" class="text-right"></th>
                                     <th >
-                                        <input type="text" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_qty" disabled>
+                                        <input type="text" name="invoice_qty" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_qty" readonly>
                                     </th>
                                     <th >
-                                        <input type="text" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_amount" disabled>
+                                        <input type="text" name="invoice_amount" class="form-control text-darker form-control-sm font-weight-bolder" id="items_table_total_amount" readonly>
                                     </th>
                                 </tr>
 
                                 <tr class="bg-darker text-white" id="items_table_tax">
 
                                     <th  class="text-center">
-                                        <select name="invoice_gst" id="invoice_gst" class=" form-control   text-darker  form-control-sm  {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" required autofocus>
+                                        <select name="invoice_gst" id="invoice_gst" class=" form-control   text-darker  form-control-sm  {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" required>
                                             <option selected disabled>-- Select GST --</option>
                                             <option value="3"> 3% ( CGST(1.5%) + SGST(1.5%) )</option>
                                             <option value="5"> 5% ( CGST(2.5%) + SGST(2.5%) )</option>
@@ -110,27 +110,21 @@
                                     </th>
 
                                     <th   class="text-center">
-                                        <select name="invoice_inward" id="invoice_inward" class=" form-control form-control-sm text-darker  font-weight-bold  form-control-alternative {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" required autofocus>
+                                        <select name="invoice_inward" id="invoice_inward" class=" form-control form-control-sm text-darker  font-weight-bold  form-control-alternative {{ $errors->has('invoice_inward') ? ' is-invalid' : '' }}" >
                                             <option selected disabled>-- Select IGST --</option>
                                             <option  disabled>-- Coming soon --</option>
 
                                         </select>
                                     </th>
 
-                                    <!--
-                                    this was addded in the newwst git push
-                                    please find it from the base repository
-                                    it just went there.
-
-                                    -->
                                     <th >
-                                        <input type="text" name="invoice_tax" id="invoice_tax" class="form-control form-control-sm font-weight-bold  text-darker form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Tax" value="{{ old('inward_reference') }}" required disabled>
+                                        <input type="text" name="invoice_tax" id="invoice_tax" class="form-control form-control-sm font-weight-bold  text-darker form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Tax" value="{{ old('inward_reference') }}" required readonly>
                                     </th>
                                     <th >
-                                        <input type="text" name="invoice_roundoff" id="invoice_roundoff" class="form-control form-control-sm font-weight-bold text-darker  form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Round Off" value="{{ old('inward_reference') }}" required  disabled>
+                                        <input type="text" name="invoice_roundoff" id="invoice_roundoff" class="form-control form-control-sm font-weight-bold text-darker  form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Round Off" value="{{ old('inward_reference') }}" required  readonly>
                                     </th>
                                     <th >
-                                        <input type="text" name="invoice_total" id="invoice_total" class="form-control form-control-sm font-weight-bold text-darker form-control-alternative {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Total" value="{{ old('inward_reference') }}" required disabled>
+                                        <input type="text" name="invoice_total" id="invoice_total" class="form-control form-control-sm font-weight-bold text-darker form-control-alternative {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Total" value="{{ old('inward_reference') }}" required readonly>
                                     </th>
 
                                 </tr>
@@ -141,7 +135,7 @@
 
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-lg btn-block btn-success mt-4">{{ __('Add') }}</button>
+                                <button type="submit" id="invoice_insert" class="btn btn-lg btn-block btn-success mt-4">{{ __('Add') }}</button>
                             </div>
 
                         </form>
@@ -159,7 +153,13 @@
 
     @push('js')
 
-
+    <script type="text/javascript">
+        $('#invoice_insert').click(function () {
+            $('#invoice_insert').attr('disabled', true);
+            $('#invoice_form').submit();
+            return true;
+        });
+    </script>
 
     @endpush
 

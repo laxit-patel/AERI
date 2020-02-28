@@ -14,6 +14,6 @@ class Clients extends Model
 
     public function inwards()
     {
-        return $this->hasMany('App\Inwards');
+        return $this->hasMany('App\Inwards','inward_id');
     }
 }

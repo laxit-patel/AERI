@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Invoice;
+use App\Transactions;
 use App\Clients;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,10 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoice = DB::table('invoices')->get();
+        $invoice = DB::table('invoices')
+            ->join('inwards','invoice_inward','=','inwards.inward_id')
+            ->join('clients','invoice_client','=','clients.client_id')
+            ->get();
         return view('invoice',['invoices' => $invoice]);
     }
 
@@ -30,7 +34,7 @@ class InvoiceController extends Controller
         $invoice = new Invoice();
         $key = keyGen($invoice);
         $clients = Clients::all(['client_id','client_name']);
-        return view('invoice/create',['key' => $key,'clients' => $clients]);
+        return view('accounts/create',['key' => $key,'clients' => $clients]);
     }
 
     /**
@@ -41,7 +45,42 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = new Transactions();
+        $transaction_key = Keygen($transaction);
+
+        $invoice = new Invoice();
+        $invoice_key = Keygen($invoice);
+
+
+
+        DB::transaction(function () use ($request, $invoice_key, $transaction_key) {
+
+            DB::table('invoices')->insert(
+                [
+                    'invoice_id' => $invoice_key,
+                    'invoice_inward' => $request->invoice_inward,
+                    'invoice_client' => $request->invoice_clients,
+                    'invoice_amount' => $request->invoice_amount,
+                    'invoice_tax' => $request->invoice_tax,
+                    'invoice_total' => $request->invoice_total,
+                    'invoice_type' => "GST",
+                    'invoice_status' => "Unpaid",
+                ]
+            );
+
+            DB::table('transactions')->insert(
+                [
+                    'transaction_id' => $transaction_key,
+                    'transaction_invoice' => $invoice_key,
+                    'transaction_client' => $request->invoice_clients,
+                    'transaction_type' => "Debit",
+                    'transaction_amount' => $request->invoice_total,
+                ]
+            );
+
+        });
+
+        return redirect()->route('invoice.index')->withStatus(__('Invoice Generated'));
     }
 
     /**

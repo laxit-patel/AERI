@@ -63,6 +63,9 @@
                                 <a class="nav-link" href="/invoice">
                                     {{ __('Invoice') }}
                                 </a>
+                                <a class="nav-link" href="/ledger">
+                                    {{ __('Ledger') }}
+                                </a>
                             </li>
 
                         </ul>

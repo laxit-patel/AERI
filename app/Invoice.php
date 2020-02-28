@@ -15,5 +15,10 @@ class Invoice extends Model
         return $this->belongsTo('App\Inwards');
     }
 
+    public function clients()
+    {
+        return $this->hasOneThrough('App\Clients', 'App\Inwards');
+    }
+
 
 }

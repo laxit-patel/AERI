@@ -26,51 +26,9 @@
                 @endif
             </div>
             <div class="col-xl-12 mb-5 mb-xl-0 ">
-                <div class="fresh-table full-color-azure shadow-primary bg-gradient-darker">
-                    <!--
-                    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
-                    Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-                    -->
-                    <div class="toolbar ">
 
-                        &nbsp;
-                        <div class=" icon-shape bg-gradient-bliss text-white rounded-circle shadow">
-                            <i class="fas fa-book "></i>
-                        </div> &nbsp; Invoice
+                Ledger comes here
 
-                    </div>
-                    <table id="fresh-table" class="table">
-                        <thead class="text-white bg-gradient-bliss">
-                        <th data-field="iscode" data-sortable="true">Invoice</th>
-                        <th data-field="name" data-sortable="true">Client</th>
-                        <th data-field="material" data-sortable="true">Inward</th>
-                        <th data-field="duration">Amount</th>
-                        <th data-field="action">Action</th>
-                        </thead>
-                        <tbody class="text-white">
-
-                        @foreach ($invoices as $invoice)
-                            <tr>
-                                <td>{{ $invoice->invoice_id }}</td>
-                                <td>{{ $invoice->client_name }}</td>
-                                <td>{{ $invoice->inward_id }}</td>
-                                <td>{{ $invoice->invoice_total   }}</td>
-
-                                <td>
-
-                                    <a href="#!" class="avatar  bg-success  rounded-circle">
-                                        <i class="fa fa-print"></i>
-                                    </a>
-                                    <a href="#!" class="avatar bg-success  rounded-circle">
-                                        <i class="fa fa-credit-card"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
             </div>
 
         </div>
@@ -131,10 +89,10 @@
                     classes: 'table table-hover table-striped',
                     toolbar: '.toolbar',
 
-                    search: true,
-                    showRefresh: true,
-                    showToggle: true,
-                    showFullscreen: true,
+                    search: false,
+                    showRefresh: false,
+                    showToggle: false,
+                    showFullscreen: false,
 
 
                     pagination: true,
@@ -159,7 +117,7 @@
 
             function router()
             {
-                window.location.href = "/invoice/create ";
+                window.location.href = "/accounts/create ";
             }
 
         </script>
