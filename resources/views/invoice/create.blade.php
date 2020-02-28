@@ -117,6 +117,12 @@
                                         </select>
                                     </th>
 
+                                    <!--
+                                    this was addded in the newwst git push
+                                    please find it from the base repository
+                                    it just went there.
+
+                                    -->
                                     <th >
                                         <input type="text" name="invoice_tax" id="invoice_tax" class="form-control form-control-sm font-weight-bold  text-darker form-control-alternative  {{ $errors->has('inward_reference') ? ' is-invalid' : '' }}" placeholder="Tax" value="{{ old('inward_reference') }}" required disabled>
                                     </th>
@@ -131,11 +137,7 @@
 
                                 </tbody>
 
-
-
                             </table>
-
-
 
 
                             <div class="text-center">
