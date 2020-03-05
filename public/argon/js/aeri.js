@@ -37,6 +37,7 @@ $('.progress-btn').append("<i class='fas fa-exclamation-circle text-white'></i>"
 var progress_bar = 0;
 $('.progress-meter').text(progress_bar + '%');
 $('.submit-test').addClass('disabled');
+$('#report_input_fields').hide();
 
 if(typeof document.getElementById("phase_one") !== 'undefined' && document.getElementById("phase_one") !== null) {
     var phase_one = document.getElementById("phase_one").getAttribute('data-status');
@@ -127,7 +128,9 @@ else if(phase_one == 1 && phase_two == 1 && phase_three == 1 && phase_four == 1)
     $('#phase_four').addClass('bg-success disabled'); 
     $('.progress-meter').text('100%');
     $('#progress-bar').css('width','100%');
+    $('#report_input_fields').fadeIn();
     $('.submit-test').removeClass('disabled');
+
 }
 
 function progress(button)
@@ -175,7 +178,7 @@ $('#invoice_client').on('change', function(){
     var client = this.value;
     $.ajax({
         type:'GET',
-        url:'/getInwardsForClient',
+        url:'/getInwardsForClient/'+client,
         data:client,
         success:function (data) {
             var i=0;

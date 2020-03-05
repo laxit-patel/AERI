@@ -56,7 +56,7 @@
                                 <td>{{ $test->test_id }}</td>
                                 <td>{{ $test->test_name }}</td>
                                 <td>{{ $test->test_iscode }}</td>
-                                <td>{{ $test->test_material }}</td>
+                                <td>{{ $test->material_name }}</td>
                                 <td>{{ $test->test_duration }}</td>
                                 <td>{{ $test->test_rate }}</td>
                                 </tr>

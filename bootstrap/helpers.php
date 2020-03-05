@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\DB;
 
 function keyGen($model)
 {
@@ -40,4 +41,47 @@ function reference($model)
     {
         return "Enter Reference No.";
     }
+}
+
+function update_records($mode, $inward, $record)
+{
+
+    if($mode == "+")
+    {
+        $base_records = DB::select("select * from inwards where inward_id = '{$inward}'");
+
+        if($base_records != NULL)
+        {
+            $inward_row = DB::select("select * from inwards where inward_id = '{$inward}'");
+            $existing_records = $inward_row[0]->inward_records;
+            $new_record = $existing_records.$record;
+            $record_with_comma = $new_record.",";
+            return $record_with_comma;
+        }
+        else
+        {
+            $new_record = $record;
+            $record_with_comma = $new_record.",";
+            return $record_with_comma;
+        }
+
+    }
+    elseif($mode == "-")
+    {
+        return "record Will be deducted";
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function retrieve_records($inward_id)
+{
+    $existing_records = DB::select("select inward_records from inwards where inward_id = '{$inward_id}'");
+    $last_record = (string)$existing_records[0]->inward_records;
+
+    $records_array = str_getcsv($last_record,',');
+
+    return $records_array;
 }

@@ -26,6 +26,8 @@ class MaterialController extends Controller
     { 
         $material = new Materials;
         $key = keyGen($material);
+
+
         return view('material.create', ['key' => $key]);
     }
 

@@ -21,8 +21,10 @@ class CreateTransactionsTable extends Migration
             $table->foreign('transaction_client')->references('client_id')->on('clients');
             $table->enum('transaction_type',array('Credit', 'Debit'));
             $table->string('transaction_amount');
+            $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+
         });
     }
 

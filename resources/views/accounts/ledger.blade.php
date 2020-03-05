@@ -27,7 +27,52 @@
             </div>
             <div class="col-xl-12 mb-5 mb-xl-0 ">
 
-                Ledger comes here
+                <div class="fresh-table full-color-azure shadow-primary bg-gradient-darker">
+                    <!--
+                    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+                    Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                    -->
+                    <div class="toolbar ">
+                        &nbsp;
+                        <div class=" icon-shape bg-gradient-bliss text-white rounded-circle shadow">
+                            <i class="fas fa-book "></i>
+                        </div> &nbsp; Ledgers
+
+                    </div>
+                    <table id="fresh-table" class="table">
+                        <thead class="text-white bg-gradient-bliss">
+                        <th data-field="iscode" data-sortable="true">Client</th>
+                        <th data-field="name" data-sortable="true">GST</th>
+                        <th data-field="material" data-sortable="true">Debit</th>
+                        <th data-field="duration">Credit</th>
+                        <th data-field="action">Action</th>
+                        </thead>
+                        <tbody class="text-white">
+
+                        @foreach ($clients as $client)
+                            <tr>
+                                <td>{{ $client->client_name }}</td>
+                                <td>{{ $client->client_gstin }}</td>
+                                <td>{{ $client->client_debit }}</td>
+                                <td>{{ $client->client_credit   }}</td>
+
+                                <td>
+
+                                    <a href="#!" class="avatar  bg-success  rounded-circle">
+                                        <i class="fa fa-print"></i>
+                                    </a>
+                                    <a href="#!" class="avatar bg-success  rounded-circle">
+                                        <i class="fa fa-credit-card"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+
+
 
             </div>
 

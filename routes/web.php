@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('test', 'TestController', ['except' => ['show']]);
 	Route::resource('inward', 'InwardController', ['except' => ['show']]);
     Route::resource('invoice', 'InvoiceController', ['except' => ['show']]);
+    Route::resource('payment', 'InvoiceController', ['except' => ['show']]);
 
 	//dynamic routes
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -55,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
         $chunks = explode("\\",$path);
         $filename = end($chunks);
         $realpath = realpath($path);
-		return Response::download($realpath,$filename);
+		return Response::download($realpath);
 	});
 
 	//ajax routes
@@ -66,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/getTestForInward/{id}', 'InwardController@sendTest');
     Route::get('/getRecordsForInward/{inward}', 'RecordsController@sendRecordsForInvoice');
 	//Route::get('/updateTestPhase', 'TestController@phase');
-    Route::get('/getInwardsForClient','invoicecontroller@getInwardsForClient');
+    Route::get('/getInwardsForClient/{client_id}','invoicecontroller@getInwardsForClient');
 
 	//assign inward to user
 	//Route::get('assignInward/{inward}/to/{user}','InwardController@assignInward');
@@ -74,7 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('assignRecord/{record}/to/{user}','InwardController@assignRecord');
 
 	//test completed
-	Route::get('completed/{record_id}', 'InwardController@status');
+	Route::post('completed/{inward_id}/{record_id}', 'InwardController@status');
 
 	//inward edit
 	Route::get('/edit/{inward_id}', 'InwardController@edit');
@@ -82,6 +83,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//accounting Routes
     Route::get('/ledger', 'LedgerController@index')->name('ledger');
+    Route::get('/invoice/view/{invoice_id}', 'InvoiceController@view')->name('ViewInvoice');
+    Route::get('/invoice/pay/{invoice_id}', 'InvoiceController@pay')->name('pay');
 
+    //payment Routes
+    Route::post('/payment', 'PaymentController@ProcessPayment')->name('ProcessPayment');
 });
 

@@ -58,7 +58,7 @@
 
                                 <td>
 
-                                    <a href="#!" class="avatar  bg-success  rounded-circle">
+                                    <a href="/invoice/view/{{ $invoice->invoice_id }}" class="avatar  bg-success  rounded-circle">
                                         <i class="fa fa-print"></i>
                                     </a>
                                     <a href="#!" class="avatar bg-success  rounded-circle">

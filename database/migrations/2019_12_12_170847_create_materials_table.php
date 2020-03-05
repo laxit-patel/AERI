@@ -17,6 +17,7 @@ class CreateMaterialsTable extends Migration
             $table->string('material_id')->primary();
             $table->string("material_name");
             $table->longText("material_description");
+            $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

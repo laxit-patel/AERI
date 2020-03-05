@@ -17,7 +17,14 @@ class TestController extends Controller
      */
     public function index(Tests $model)
     {
-        return view('test', ['tests' => $model->paginate(15)]);
+
+        $tests = DB::table('tests')
+            ->join('materials','test_material','=','materials.material_id')
+            ->get();
+
+
+
+        return view('test',  ['tests' => $tests]);
     }
 
     /**
@@ -49,7 +56,7 @@ class TestController extends Controller
             'test_report' => 'required | file | mimes:xls,xlsx,docx,xltx,pdf',
         ]);
 
-
+        
         $worksheet_filename = "worksheet_".$key.".".$request->file("test_worksheet")->getClientOriginalExtension();
         $worksheet_directory = 'test_worksheets';
         $worksheet_file = $request->file('test_worksheet')->storeAs($worksheet_directory, $worksheet_filename );

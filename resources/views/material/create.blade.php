@@ -18,6 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+
                         <form method="post" action="{{ route('material.store') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
                            

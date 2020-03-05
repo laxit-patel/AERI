@@ -20,6 +20,10 @@ class CreateClientTable extends Migration
             $table->string('client_email');
             $table->string('client_address');
             $table->string('client_gstin');
+            $table->string('client_debit')->default(NULL)->nullable();
+            $table->string('client_credit')->default(NULL)->nullable();
+            $table->string('client_receivable')->default(0);
+            $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

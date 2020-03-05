@@ -119,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/kreait/gcp-metadata" />
       <path value="$PROJECT_DIR$/vendor/kreait/laravel-firebase" />
       <path value="$PROJECT_DIR$/vendor/kreait/clock" />
+      <path value="$PROJECT_DIR$/vendor/kwn/number-to-words" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

@@ -25,6 +25,8 @@ class CreateTest extends Migration
             $table->string("test_worksheet");
             $table->string("test_report");
             $table->string("test_duration");
+            $table->string('mode_amount')->nullable();
+            $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

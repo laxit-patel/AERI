@@ -59,9 +59,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
-                            @csrf
-                            @method('put')
+
 
                             
                             
@@ -83,7 +81,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                    <a href="/download?path={{$record->test_worksheet}}"  class="btn btn-block btn-lg btn-primary mt-4">{{ __('Download Report Format') }}</a>
+                                    <a href="/download?path={{$record->test_report}}"  class="btn btn-block btn-lg btn-primary mt-4">{{ __('Download Report Format') }}</a>
                                     </div>
 
                                 </div>
@@ -112,7 +110,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Second Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
+                                                <span class="h2 font-weight-bold mb-0">Testing</span>
                                             </div>
                                             <div class="col-auto ">
                                             <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_two" data-phase="record_phase_two" data-status="{{$record->record_phase_two}}"></button>
@@ -126,7 +124,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Third Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
+                                                <span class="h2 font-weight-bold mb-0">Worksheet</span>
                                             </div>
                                             <div class="col-auto ">
                                             <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_three" data-phase="record_phase_three" data-status="{{$record->record_phase_three}}"></button>
@@ -140,7 +138,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="card-title text-uppercase text-muted mb-0">Fourth Phase</h5>
-                                                <span class="h2 font-weight-bold mb-0">Preparations</span>
+                                                <span class="h2 font-weight-bold mb-0">Report</span>
                                             </div>
                                             <div class="col-auto ">
                                             <button type="button" onclick="progress(this)" class="btn btn-round bg-danger text-white" id="phase_four" data-phase="record_phase_four" data-status="{{$record->record_phase_four}}"></button>
@@ -153,23 +151,56 @@
 
                                 <hr>
 
-                                <span class="mr-2 progress-meter"></span>
-                                <div>
+                                <div class="bg-gradient-cyan container rounded">
+                                <span class="mr-2 progress-meter font-weight-bolder " ></span>
+                                <div class="mt-4">
                                 <div class="progress" >
                                     <div class="progress-bar bg-info" role="progressbar" id="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
                                 </div>
                                 </div>
 
+                            <form method="post" id="submit_report_form" action="/completed/{{ $record->record_inward  }}/{{ $record->record_id }}" autocomplete="off" enctype="multipart/form-data">
+                                @csrf
+
+
+                                <div class="row" id="report_input_fields" >
+                                    <div class=" col-md-4 form-group{{ $errors->has('test_report_number') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-reference">{{ __('Report Number') }}</label>
+                                        <input type="text" name="test_report_number" id="test_report_number" class="form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_report_number') ? ' is-invalid' : '' }}" placeholder="{{ __('Report Number') }}"     required >
+
+                                        @if ($errors->has('test_report_number'))
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('test_report_number') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+
+                                    <div class=" col-md-8 form-group{{ $errors->has('test_final_report') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-reference">{{ __('Report File') }}</label>
+                                        <input type="file" name="test_final_report" id="test_final_report" class="form-control  form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_final_report') ? ' is-invalid' : '' }}" placeholder="{{ __('Test Report') }}" value="{{ old('test_final_report') }}" required >
+
+                                        @if ($errors->has('test_final_report'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('test_final_report') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
 
                                 <div class="btn-group " role="group" style="width:100%">
-                                <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4">{{ __('Back') }}</a>
-                                <a href="/completed/{{ $record->record_id }}" class="btn btn-block btn-success float-right mt-4 submit-test">{{ __('Submit') }}</a>
+                                <a href="{{ route('lab') }}" class="btn btn-block btn-primary float-left mt-4 mb-4 shadow-primary">{{ __('Back') }}</a>
+                                <a  class="btn btn-block shadow-primary btn-success float-right mt-4 mb-4 text-white submit-test" id="submit_report_button" >{{ __('Submit') }}</a>
                                 </div>
+
+                                </form>
+
+                    </div>
                                 
                                     
                                 
-                            </div>
-                        </form>
+
+
                         
                     </div>
                 </div>
@@ -178,4 +209,19 @@
         
         @include('layouts.footers.auth')
     </div>
+
+
+
+    @push('js')
+
+        <script type="text/javascript">
+            $('#submit_report_button').click(function () {
+                $('#submit_report_button').attr('disabled', true);
+                $('#submit_report_form').submit();
+                return true;
+            });
+        </script>
+
+    @endpush
+
 @endsection

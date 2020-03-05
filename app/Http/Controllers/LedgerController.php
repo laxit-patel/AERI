@@ -12,11 +12,14 @@ class LedgerController extends Controller
         $ledger = DB::table('transactions')
             ->join('clients','transaction_client','=','clients.client_id')
             ->join('invoices','transaction_invoice','=','invoices.invoice_id')
-            ->where('transaction_client','=','S220_CLNT_0001')
             ->get();
 
+        $clients = DB::table('clients')
+            ->get();
 
-        return view('accounts.ledger',['invoices' => $ledger]);
+        dd($ledger);
+
+        return view('accounts.ledger',['ledgers' => $ledger, 'clients' => $clients]);
     }
 
 }

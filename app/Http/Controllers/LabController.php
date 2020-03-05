@@ -106,7 +106,7 @@ class LabController extends Controller
                         ->leftJoin('users','record_assign_to','=','users.id')
                         ->where('record_id',$record_id)->get();
                          
-                         
+
         $record = $data[0];
         return view('lab.perform', ['record' => $record], compact('record') );
     }

@@ -22,8 +22,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $inward_row = DB::table('records')->where('record_status','Enlisted')->count();
-        $inwards = "404";
-        return view('dashboard',compact('inwards'));
+
+        $tests = DB::table('records')
+            ->join('users','record_assign_to','=','users.id')
+            ->get();
+
+
+
+        return view('dashboard',compact('tests'));
     }
 }

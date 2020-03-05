@@ -49,7 +49,7 @@
                                     <select name="test_material" id="input-material" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-info form-control-alternative{{ $errors->has('test_material') ? ' is-invalid' : '' }}" required autofocus>
                                         <option selected disabled>Select Material</option>
                                         @foreach($materials as $material)
-                                        <option value="{{ $material['material_id'] }}">{{ $material['material_name'] }}</option>
+                                        <option class="text-dark" value="{{ $material['material_id'] }}">{{ $material['material_name'] }}</option>
                                         @endforeach
                                     </select>
 

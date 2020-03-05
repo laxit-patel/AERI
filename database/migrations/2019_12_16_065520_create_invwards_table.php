@@ -21,8 +21,10 @@ class CreateInvwardsTable extends Migration
             $table->string("inward_test"); 
             $table->string("inward_date");
             $table->string("inward_report_date");
-            $table->string("inward_report");
+            $table->string('inward_records', 1000);
+            $table->string('inward_pending')->default(0);
             $table->string("inward_description");
+            $table->boolean('exists')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
