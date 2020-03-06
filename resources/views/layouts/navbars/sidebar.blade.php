@@ -79,13 +79,27 @@
                         <span class="nav-link-text"> {{ __('Laboratory') }}</span>
                     </a>
                 </li>
-               
+
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/inward">
-                        <i class="fas fa-sign-in-alt text-red
-                        "></i> 
-                        <span class="nav-link-text">{{ __('Inwards') }}</span>
+                    <a class="nav-link " href="#navbar-inward" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-inward">
+                        <i class="fas fa-sign-in-alt text-red"></i>
+                        <span class="nav-link-text" >{{ __('Inwards') }}</span>
                     </a>
+
+                    <div class="collapse " id="navbar-inward">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/inward">
+                                    {{ __('Inwards') }}
+                                </a>
+                                <a class="nav-link" href="/inward/archive">
+                                    {{ __('Archive') }}
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
                 </li>
               
                 <li class="nav-item">

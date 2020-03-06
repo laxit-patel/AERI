@@ -21,6 +21,8 @@
                         <form method="post" action="{{ route('invoice.store') }}"  id="invoice_form">
                             @csrf
 
+                            <input type="hidden" id="invoice_item_counter" name="invoice_item_counter">
+
                             <div class="row">
                                 <div class="col-md-3 form-group{{ $errors->has('test_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-id">{{ __('Invoice Id') }}</label>
@@ -39,7 +41,7 @@
                                     <select name="invoice_clients" id="invoice_client" class="custom-select custom-select-lg form-control form-control-lg font-weight-bold text-white bg-gradient-blue form-control-alternative{{ $errors->has('invoice_clients') ? ' is-invalid' : '' }}" required autofocus>
                                         <option selected disabled>Select Client</option>
                                         @foreach($clients as $client)
-                                            <option value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
+                                            <option class='text-dark' value="{{ $client['client_id'] }}">{{ $client['client_name'] }}</option>
                                         @endforeach
                                     </select>
 

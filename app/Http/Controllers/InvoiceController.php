@@ -57,10 +57,14 @@ class InvoiceController extends Controller
             ->where('client_id',$request->invoice_clients)
             ->get();
 
-        $debit = $client_data[0]->client_debit;
-        $invoice_debit = $debit + $request->invoice_total;
+        $receivable = $client_data[0]->client_receivable;
+        $invoice_receivable = $receivable + $request->invoice_total;
 
-        DB::transaction(function () use ($request, $invoice_key, $transaction_key, $invoice_debit) {
+        $old_record = DB::table('records')->where('record_inward',$request->invoice_inward)->count();
+        $count_record = (int)$old_record - (int)$request->invoice_item_counter;
+
+
+        DB::transaction(function () use ($request, $invoice_key, $transaction_key, $invoice_receivable, $count_record) {
 
             DB::table('invoices')->insert(
                 [
@@ -90,7 +94,7 @@ class InvoiceController extends Controller
                 ->where('client_id',$request->invoice_clients)
                 ->update(
                     [
-                        'client_debit' => $invoice_debit
+                        'client_receivable' => $invoice_receivable
                     ]
                 );
 
@@ -101,6 +105,15 @@ class InvoiceController extends Controller
                     'record_invoice' => $invoice_key
                 ]
             );
+
+            DB::table('inwards')
+                ->where('inward_id',$request->invoice_inward)
+                ->update(
+                    [
+                        'inward_invoice_pending' => $count_record
+                    ]
+                );
+
 
         });
 
@@ -170,6 +183,7 @@ class InvoiceController extends Controller
     {
 
         $inwards = DB::table('inwards')->join('clients', 'inward_client','=','clients.client_id')
+            ->where('inward_client', '=', $client_id )
             ->where('inward_pending','=',0)
             ->get();
 

@@ -94,9 +94,15 @@ class PaymentController extends Controller
         $transaction_model = new Transactions();
         $transaction_id = keyGen($transaction_model);
 
+        $client_data = DB::table('clients')
+            ->where('client_id',$request->payment_client)
+            ->get();
+
+        $receivable = $client_data[0]->client_receivable;
+        $invoice_receivable = +$receivable - +$request->payment_mode_amount;
 
 
-        DB::transaction(function () use($payment_id,$mode_id,$transaction_id,$request) {
+        DB::transaction(function () use($payment_id,$mode_id,$transaction_id,$request,$invoice_receivable) {
 
             DB::table('payments')->insert(
                 [
@@ -142,7 +148,7 @@ class PaymentController extends Controller
             DB::table('clients')->where('client_id',$request->payment_client)
                 ->update(
                     [
-                        'client_credit' => $request->payment_mode_amount
+                        'client_receivable' => $invoice_receivable
                     ]
                 );
 

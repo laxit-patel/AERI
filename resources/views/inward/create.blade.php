@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('inward.store') }}" autocomplete="off">
+                        <form method="post" id="inward_form" action="{{ route('inward.store') }}" autocomplete="off">
                             @csrf
                             
 
@@ -177,7 +177,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-lg btn-block text-white bg-gradient-success  mt-4">{{ __('Add') }}</button>
+                                    <button  id="inward_submit_button" class="btn btn-lg btn-block text-white bg-gradient-success  mt-4">{{ __('Add') }}</button>
                                 </div>
                             
                         </form>
@@ -202,7 +202,15 @@
         inherit_select_classes: true
     });
 
-    </script>                            
+    </script>  
+    
+    <script type="text/javascript">
+        $('#inward_submit_button').click(function () {
+            $('#inward_submit_button').attr('disabled', true);
+            $('#inward_form').submit();
+            return true;
+        });
+    </script>
                                 
     @endpush
 @endsection

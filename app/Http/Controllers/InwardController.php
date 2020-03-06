@@ -19,10 +19,31 @@ class InwardController extends Controller
      */
     public function index()
     {
-        $inward = DB::select("select inward_id, inward_client, inward_report_date, inward_test, test_id, test_name, test_material, material_id, client_name, material_name from inwards i inner join clients c on i.inward_client = c.client_id inner join tests t on i.inward_test = t.test_id inner join materials m on t.test_material = m.material_id ");
+
         $records = \App\Records::all();
         $users = DB::select("select id,name from users where role ='engineer' ");
+
+        $inward = DB::table('inwards')
+            ->join('clients','inward_client','=','clients.client_id')
+            ->get();
+            
+            
+
         return view('inward', ['inwards' => $inward , 'users' => $users], compact('records'));
+    }
+
+    public function archive()
+    {
+
+        $inward = DB::table('inwards')
+            ->join('records','inward_id','=','records.record_inward')
+            ->join('clients','inward_client','=','clients.client_id')
+            ->leftJoin('invoices','inward_id','=','invoices.invoice_inward')
+            ->get();
+
+
+
+        return view('inward.archive', ['inwards' => $inward  ]);
     }
 
     public function edit($inward_id)
@@ -120,6 +141,7 @@ class InwardController extends Controller
                         'inward_date' => $request->inward_date,
                         'inward_records' => $inward_record,
                         'inward_pending' => 1,
+                        'inward_invoice_pending' => 1,
                         'inward_description' => $request->inward_description,
                         'inward_report_date' => $request->inward_report_date
                     ]
@@ -199,7 +221,8 @@ class InwardController extends Controller
 
             DB::table('inwards')->where('inward_id',$inward_id)->update(
                 array(
-                    'inward_pending' => $new_inward_pending
+                    'inward_pending' => $new_inward_pending,
+                    'inward_status' => 'Tested'
                 ));
 
         });
@@ -255,9 +278,9 @@ class InwardController extends Controller
         $inward_id = $request->inward_id;
 
         $inward_records = update_records('+',$request->inward_id,$record_id);
-
-        $inward_pending = DB::select("select inward_pending from inwards where inward_id = '{$inward_id}'");
+        $inward_pending = DB::select("select inward_pending,inward_invoice_pending from inwards where inward_id = '{$inward_id}'");
         $pending = (int)$inward_pending[0]->inward_pending + 1;
+        $invoice_pending = (int)$inward_pending[0]->inward_invoice_pending + 1;
 
 
 
@@ -281,19 +304,18 @@ class InwardController extends Controller
             }
         }
 
-
-
         if($unique_flag == 1)
         {
             //if record is unique
-            DB::transaction(function () use ($inward_id, $record, $request, $record_id, $inward_records, $pending) {
+            DB::transaction(function () use ($inward_id, $record, $request, $record_id, $inward_records, $pending, $invoice_pending) {
 
                 DB::table('inwards')
                     ->where('inward_id','=',$inward_id)
                     ->update(
                         [
                             'inward_records' => $inward_records,
-                            'inward_pending' => $pending
+                            'inward_pending' => $pending,
+                            'inward_invoice_pending' => $invoice_pending,
                         ]
                     );
                 DB::commit();

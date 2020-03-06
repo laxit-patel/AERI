@@ -17,8 +17,6 @@ class LedgerController extends Controller
         $clients = DB::table('clients')
             ->get();
 
-        dd($ledger);
-
         return view('accounts.ledger',['ledgers' => $ledger, 'clients' => $clients]);
     }
 

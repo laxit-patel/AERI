@@ -67,10 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/getTestForInward/{id}', 'InwardController@sendTest');
     Route::get('/getRecordsForInward/{inward}', 'RecordsController@sendRecordsForInvoice');
 	//Route::get('/updateTestPhase', 'TestController@phase');
-    Route::get('/getInwardsForClient/{client_id}','invoicecontroller@getInwardsForClient');
+    Route::get('/getInwardsForClient/{client_id}','InvoiceController@getInwardsForClient');
 
 	//assign inward to user
 	//Route::get('assignInward/{inward}/to/{user}','InwardController@assignInward');
+
 	//assign record to user
 	Route::get('assignRecord/{record}/to/{user}','InwardController@assignRecord');
 
@@ -88,5 +89,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //payment Routes
     Route::post('/payment', 'PaymentController@ProcessPayment')->name('ProcessPayment');
+
+    //inward archive
+    Route::get('/inward/archive', 'InwardController@archive')->name('archive');
 });
 

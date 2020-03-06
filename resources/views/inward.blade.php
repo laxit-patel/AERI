@@ -45,7 +45,7 @@
                         <th data-field="name">Client</th>
                         
                         <th data-field="report_date" data-sortable="true">Report Date</th>
-                        <th data-field="material" data-sortable="true">Material</th>
+                        <th data-field="material" data-sortable="true">Status</th>
                         
                         
                         <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
@@ -60,7 +60,7 @@
                                 <td  >{{ $inward->client_name }}</td>
                                 
                                 <td>{{ $inward->inward_report_date }}</td>
-                                <td>{{ $inward->material_name }}</td>
+                                <td><div class="badge badge-success font-weight-bolder text-dark">{{ $inward->inward_status }}</div></td>
                                 
 
                                 

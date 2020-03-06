@@ -53,7 +53,7 @@
                             <tr>
                                 <td>{{ $client->client_name }}</td>
                                 <td>{{ $client->client_gstin }}</td>
-                                <td>{{ $client->client_debit }}</td>
+                                <td>{{ $client->client_receivable }}</td>
                                 <td>{{ $client->client_credit   }}</td>
 
                                 <td>
