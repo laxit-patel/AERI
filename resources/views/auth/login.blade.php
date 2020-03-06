@@ -5,7 +5,7 @@
 
     <div class="container mt--8 pb-5">
 
-    <div class="col-lg-6 col-md-8 offset-3">
+    <div class="col-lg-6 col-md-8 ">
           <div class="card card-profile bg-secondary ">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
